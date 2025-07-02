@@ -7,6 +7,8 @@ import { useRef } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Star, Quote, ChevronLeft, ChevronRight, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import AOS styles
 
 export function Testimonials() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
@@ -67,6 +69,13 @@ export function Testimonials() {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
   }
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration
+      once: true, // Whether animation should happen only once
+    });
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -91,36 +100,9 @@ export function Testimonials() {
   }
 
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden" ref={ref}>
+    <section id="testimonials" className="py-24 relative overflow-hidden bg-gray-50" ref={ref}>
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50"></div>
-
-      {/* Decorative Elements */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-        className="absolute top-20 left-20 w-40 h-40 bg-gradient-to-r from-amber-200 to-yellow-200 rounded-full"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-        className="absolute bottom-20 right-20 w-32 h-32 bg-gradient-to-r from-yellow-200 to-orange-200 rounded-full"
-      />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
@@ -131,31 +113,18 @@ export function Testimonials() {
           className="text-center mb-20"
         >
           <motion.div variants={itemVariants} className="flex items-center justify-center space-x-3 mb-6">
-            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}>
-              <Heart className="h-8 w-8 text-amber-600" />
-            </motion.div>
+            <Heart className="h-8 w-8 text-amber-600" />
             <span className="text-amber-700 font-semibold text-lg tracking-wide uppercase">Testimonials</span>
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, delay: 0.5 }}
-            >
-              <Heart className="h-8 w-8 text-amber-600" />
-            </motion.div>
+            <Heart className="h-8 w-8 text-amber-600" />
           </motion.div>
 
-          <motion.h2 variants={itemVariants} className="text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-            <motion.span
-              initial={{ backgroundPosition: "0% 50%" }}
-              animate={isInView ? { backgroundPosition: "100% 50%" } : { backgroundPosition: "0% 50%" }}
-              transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-              className="bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-800 bg-clip-text text-transparent bg-[length:200%_100%]"
-            >
-              Love Stories
-            </motion.span>
+          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            <span className="text-gray-900">What Our Clients</span>
             <br />
-            <span className="text-gray-800">From Our Clients</span>
+            <span className="bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 bg-clip-text text-transparent">
+              Say About Us
+            </span>
           </motion.h2>
-
           <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Don't just take our word for it. Here's what our happy couples and clients have to say about their
             incredible experience with Manglam Event.
@@ -169,7 +138,7 @@ export function Testimonials() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="relative max-w-6xl mx-auto mb-16"
         >
-          <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-sm overflow-hidden">
+          <Card className="border-0 shadow-2xl bg-white rounded-lg overflow-hidden">
             <CardContent className="p-0">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -228,7 +197,7 @@ export function Testimonials() {
                         transition={{ duration: 0.3 }}
                         src={testimonials[currentTestimonial].image || "/13.jpeg"}
                         alt={testimonials[currentTestimonial].name}
-                        className="w-20 h-20 rounded-full object-cover border-4 border-amber-200"
+                        className="w-20 h-20 rounded-full object-cover border-4 border-amber-200 shadow-lg"
                       />
                       <div>
                         <h4 className="text-2xl font-bold text-gray-900 mb-1">
@@ -250,12 +219,12 @@ export function Testimonials() {
                     className="relative h-96 lg:h-auto"
                   >
                     <div
-                      className="absolute inset-0 bg-cover bg-center"
+                      className="absolute inset-0 bg-cover bg-center rounded-lg"
                       style={{
                         backgroundImage: `url(/13.jpeg?height=600&width=600&text=${testimonials[currentTestimonial].event.replace(/\s+/g, "+")})`,
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/20" />
+                    <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/20 rounded-lg" />
                   </motion.div>
                 </motion.div>
               </AnimatePresence>
@@ -264,30 +233,28 @@ export function Testimonials() {
 
           {/* Navigation Buttons */}
           <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            whileHover={{ backgroundColor: "rgba(255, 235, 59, 0.2)" }} // Change background color on hover
+            transition={{ duration: 0.3 }}
           >
             <Button
               variant="outline"
               size="icon"
               onClick={prevTestimonial}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/95 backdrop-blur-sm border-2 border-amber-600 text-amber-700 hover:bg-amber-50 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/95 backdrop-blur-sm border-2 border-amber-600 text-amber-700 w-14 h-14 rounded-full shadow-lg transition-all duration-300"
             >
               <ChevronLeft className="h-6 w-6" />
             </Button>
           </motion.div>
 
           <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            whileHover={{ backgroundColor: "rgba(255, 235, 59, 0.2)" }} // Change background color on hover
+            transition={{ duration: 0.3 }}
           >
             <Button
               variant="outline"
               size="icon"
               onClick={nextTestimonial}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/95 backdrop-blur-sm border-2 border-amber-600 text-amber-700 hover:bg-amber-50 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/95 backdrop-blur-sm border-2 border-amber-600 text-amber-700 w-14 h-14 rounded-full shadow-lg transition-all duration-300"
             >
               <ChevronRight className="h-6 w-6" />
             </Button>
@@ -383,3 +350,10 @@ export function Testimonials() {
     </section>
   )
 }
+
+
+
+
+
+
+
