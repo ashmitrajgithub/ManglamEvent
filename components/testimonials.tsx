@@ -21,7 +21,8 @@ export function Testimonials() {
       event: "Destination Wedding in Goa",
       rating: 5,
       text: "Manglam Event made our dream wedding come true! From the beautiful beachside setup to the seamless coordination, everything was absolutely perfect. Our guests are still talking about how magical and unforgettable our wedding was. The attention to detail was incredible!",
-      image: "/13.jpeg?height=100&width=100&text=P&R",
+      clientImage: "/r1.jpg", // Client image
+      uniqueImage: "/r2.jpg", // Unique image for this testimonial
       location: "Goa",
       date: "December 2023",
     },
@@ -30,7 +31,8 @@ export function Testimonials() {
       event: "Royal Wedding in Rajasthan",
       rating: 5,
       text: "The team at Manglam Event exceeded all our expectations and more. The attention to detail, the beautiful royal decor, and the flawless execution made our wedding day absolutely perfect. We couldn't have asked for a better wedding planning experience. Highly recommended!",
-      image: "/placeholder.svg?height=100&width=100&text=S&A",
+      clientImage: "/images/client2.jpg", // Client image
+      uniqueImage: "/r1.jpg", // Unique image for this testimonial
       location: "Udaipur",
       date: "November 2023",
     },
@@ -39,7 +41,8 @@ export function Testimonials() {
       event: "Modern Wedding in Mumbai",
       rating: 5,
       text: "Professional, creative, and absolutely wonderful to work with. Manglam Event turned our vision into reality and created memories that will last a lifetime. Every moment was perfectly planned and executed. Thank you for making our day so incredibly special!",
-      image: "/placeholder.svg?height=100&width=100&text=K&V",
+      clientImage: "/images/client3.jpg", // Client image
+      uniqueImage: "/images/mumbai-wedding.jpg", // Unique image for this testimonial
       location: "Mumbai",
       date: "October 2023",
     },
@@ -48,7 +51,8 @@ export function Testimonials() {
       event: "Corporate Annual Celebration",
       rating: 5,
       text: "We hired Manglam Event for our company's annual celebration, and they delivered beyond our expectations. The event was professional, engaging, and perfectly organized. Our entire team loved it and we received amazing feedback from all attendees!",
-      image: "/placeholder.svg?height=100&width=100&text=R&S",
+      clientImage: "/images/client4.jpg", // Client image
+      uniqueImage: "/images/delhi-celebration.jpg", // Unique image for this testimonial
       location: "Delhi",
       date: "September 2023",
     },
@@ -119,12 +123,18 @@ export function Testimonials() {
           </motion.div>
 
           <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-            <span className="text-gray-900">What Our Clients</span>
-            <br />
-            <span className="bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 bg-clip-text text-transparent">
-              Say About Us
-            </span>
-          </motion.h2>
+
+<span className="text-gray-900">What Our Clients</span>
+
+<br />
+
+<span className="bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 bg-clip-text text-transparent">
+
+  Say About Us
+
+</span>
+
+</motion.h2>
           <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Don't just take our word for it. Here's what our happy couples and clients have to say about their
             incredible experience with Manglam Event.
@@ -138,7 +148,7 @@ export function Testimonials() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="relative max-w-6xl mx-auto mb-16"
         >
-          <Card className="border-0 shadow-2xl bg-white rounded-lg overflow-hidden">
+          <Card className="border-0 shadow-2xl bg-white rounded-lg overflow-hidden transition-transform transform hover:scale-105">
             <CardContent className="p-0">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -195,9 +205,9 @@ export function Testimonials() {
                       <motion.img
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
-                        src={testimonials[currentTestimonial].image || "/13.jpeg"}
+                        src={testimonials[currentTestimonial].clientImage}
                         alt={testimonials[currentTestimonial].name}
-                        className="w-20 h-20 rounded-full object-cover border-4 border-amber-200 shadow-lg"
+                        className="w-20 h-20 rounded-full object-cover border-4 border-amber-200 shadow-lg transition-transform transform hover:scale-105"
                       />
                       <div>
                         <h4 className="text-2xl font-bold text-gray-900 mb-1">
@@ -218,11 +228,10 @@ export function Testimonials() {
                     transition={{ delay: 0.4, duration: 0.8 }}
                     className="relative h-96 lg:h-auto"
                   >
-                    <div
-                      className="absolute inset-0 bg-cover bg-center rounded-lg"
-                      style={{
-                        backgroundImage: `url(/13.jpeg?height=600&width=600&text=${testimonials[currentTestimonial].event.replace(/\s+/g, "+")})`,
-                      }}
+                    <img
+                      src={testimonials[currentTestimonial].uniqueImage}
+                      alt={testimonials[currentTestimonial].event}
+                      className="absolute inset-0 w-full h-full object-cover rounded-lg"
                     />
                     <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/20 rounded-lg" />
                   </motion.div>
@@ -290,7 +299,7 @@ export function Testimonials() {
                 }`}
               >
                 <img
-                  src={testimonial.image || "/13.jpeg"}
+                  src={testimonial.clientImage}
                   alt={testimonial.name}
                   className="w-full h-full object-cover"
                 />
@@ -350,10 +359,3 @@ export function Testimonials() {
     </section>
   )
 }
-
-
-
-
-
-
-
