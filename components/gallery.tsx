@@ -6,7 +6,7 @@ import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Eye, Heart, Crown } from "lucide-react"
+import { Eye, Heart, MapPin, Star } from "lucide-react"
 
 export function Gallery() {
   const [activeCategory, setActiveCategory] = useState("all")
@@ -14,332 +14,184 @@ export function Gallery() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const categories = [
-    { id: "all", name: "All Events", count: 120 },
-    { id: "weddings", name: "Weddings", count: 85 },
-    { id: "destinations", name: "Destinations", count: 25 },
-    { id: "decor", name: "Decor", count: 40 },
-    { id: "corporate", name: "Corporate", count: 15 },
+    { id: "all", name: "All Projects" },
+    { id: "weddings", name: "Weddings" },
+    { id: "destinations", name: "Destinations" },
+    { id: "decor", name: "Decor" },
+    { id: "corporate", name: "Corporate" },
   ]
 
   const galleryItems = [
     {
       id: 1,
       category: "weddings",
-      image: "/01.jpeg?height=500&width=400&text=Elegant+Wedding+Ceremony",
-      title: "Elegant Wedding Ceremony",
+      image: "/01.jpeg",
+      title: "Royal Palace Wedding",
       location: "Udaipur Palace",
-      likes: 245,
+      year: "2024",
     },
     {
       id: 2,
       category: "destinations",
-      image: "/02.jpeg?height=600&width=400&text=Beach+Destination+Wedding",
+      image: "/02.jpeg",
       title: "Beach Destination Wedding",
-      location: "Goa Beaches",
-      likes: 189,
+      location: "Goa",
+      year: "2024",
     },
     {
       id: 3,
       category: "decor",
-      image: "/03.jpeg?height=500&width=400&text=Luxury+Wedding+Decor",
+      image: "/03.jpeg",
       title: "Luxury Wedding Decor",
       location: "Mumbai",
-      likes: 156,
+      year: "2023",
     },
     {
       id: 4,
       category: "corporate",
-      image: "/04.jpeg?height=400&width=400&text=Corporate+Event",
+      image: "/04.jpeg",
       title: "Corporate Annual Event",
       location: "Delhi",
-      likes: 98,
+      year: "2024",
     },
     {
       id: 5,
       category: "weddings",
-      image: "/05.jpeg?height=600&width=400&text=Traditional+Wedding",
+      image: "/05.jpeg",
       title: "Traditional Wedding",
       location: "Jaipur",
-      likes: 312,
+      year: "2023",
     },
     {
       id: 6,
       category: "destinations",
-      image: "/06.jpeg?height=500&width=400&text=Mountain+Wedding",
+      image: "/06.jpeg",
       title: "Mountain Wedding",
-      location: "Shimla Hills",
-      likes: 203,
+      location: "Shimla",
+      year: "2024",
     },
     {
       id: 7,
       category: "decor",
-      image: "/08.jpeg?height=400&width=400&text=Romantic+Table+Setting",
-      title: "Romantic Table Setting",
+      image: "/08.jpeg",
+      title: "Elegant Reception",
       location: "Bangalore",
-      likes: 167,
+      year: "2023",
     },
     {
       id: 8,
       category: "weddings",
-      image: "/13.jpeg?height=600&width=400&text=Grand+Reception",
-      title: "Grand Reception",
+      image: "/13.jpeg",
+      title: "Grand Celebration",
       location: "Chennai",
-      likes: 278,
+      year: "2024",
     },
   ]
 
   const filteredItems =
     activeCategory === "all" ? galleryItems : galleryItems.filter((item) => item.category === activeCategory)
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  }
-
   return (
-    <section id="gallery" className="py-24 relative overflow-hidden" ref={ref}>
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-amber-50"></div>
-
-      {/* Decorative Elements */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-        className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-r from-amber-200 to-yellow-200 rounded-full"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-        className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-r from-yellow-200 to-orange-200 rounded-full"
-      />
-
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
+    <section id="gallery" className="py-20 md:py-28 bg-white" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Clean Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex items-center justify-center space-x-3 mb-6"
-          >
-            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}>
-              <Eye className="h-8 w-8 text-amber-600" />
-            </motion.div>
-            <span className="text-amber-700 font-semibold text-lg tracking-wide uppercase">Portfolio</span>
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, delay: 0.5 }}
-            >
-              <Eye className="h-8 w-8 text-amber-600" />
-            </motion.div>
-          </motion.div>
+          <div className="mb-4">
+            <span className="text-amber-700 font-medium text-sm uppercase tracking-wider">Portfolio</span>
+          </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-5xl lg:text-6xl font-bold mb-8 leading-tight"
-          >
-            <motion.span
-              initial={{ backgroundPosition: "0% 50%" }}
-              animate={isInView ? { backgroundPosition: "100% 50%" } : { backgroundPosition: "0% 50%" }}
-              transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-              className="bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-800 bg-clip-text text-transparent bg-[length:200%_100%]"
-            >
-              Our Beautiful
-            </motion.span>
-            <br />
-            <span className="text-gray-800">Creations</span>
-          </motion.h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-6 text-gray-900 leading-tight">
+            Our Recent
+            <span className="block font-normal bg-gradient-to-r from-amber-700 to-yellow-600 bg-clip-text text-transparent">
+              Projects
+            </span>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12"
-          >
-            Explore our portfolio of stunning weddings and events that showcase our creativity, attention to detail, and
-            commitment to excellence.
-          </motion.p>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light mb-12">
+            Discover our portfolio of exceptional weddings and events, showcasing our commitment to excellence and
+            attention to detail.
+          </p>
 
-          {/* Category Filter */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-wrap justify-center gap-4 mb-16"
-          >
-            {categories.map((category, index) => (
-              <motion.div
+          {/* Clean Category Filter */}
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+            {categories.map((category) => (
+              <Button
                 key={category.id}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                transition={{ delay: 0.8 + index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                variant={activeCategory === category.id ? "default" : "outline"}
+                onClick={() => setActiveCategory(category.id)}
+                className={`${
+                  activeCategory === category.id
+                    ? "bg-amber-600 hover:bg-amber-700 text-white"
+                    : "border-amber-600 text-amber-700 hover:bg-amber-50 bg-white"
+                } font-medium px-6 py-2 rounded-full transition-all duration-300`}
               >
-                <Button
-                  variant={activeCategory === category.id ? "default" : "outline"}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`${
-                    activeCategory === category.id
-                      ? "bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 hover:from-amber-700 hover:via-yellow-700 hover:to-amber-800 text-white shadow-lg"
-                      : "border-2 border-amber-600 text-amber-700 hover:bg-amber-50"
-                  } font-semibold px-6 py-3 rounded-full transition-all duration-300`}
-                >
-                  {category.name}
-                  <motion.span
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, delay: index * 0.2 }}
-                    className="ml-2 text-xs bg-white/20 px-2 py-1 rounded-full"
-                  >
-                    {category.count}
-                  </motion.span>
-                </Button>
-              </motion.div>
+                {category.name}
+              </Button>
             ))}
-          </motion.div>
+          </div>
         </motion.div>
 
-        {/* Gallery Grid */}
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
+        {/* Professional Gallery Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mb-16"
+        >
           <AnimatePresence mode="wait">
             {filteredItems.map((item, index) => (
               <motion.div
                 key={item.id}
                 layout
-                initial={{ opacity: 0, scale: 0.8, y: 50 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: -50 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
                 transition={{
-                  duration: 0.6,
+                  duration: 0.5,
                   delay: index * 0.1,
-                  ease: "easeOut",
                 }}
-                whileHover={{
-                  scale: 1.05,
-                  rotateY: 5,
-                  transition: { duration: 0.3 },
-                }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ y: -8 }}
+                className="group cursor-pointer"
               >
-                <Card className="group overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer bg-white">
+                <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
                   <div className="relative overflow-hidden">
-                    <motion.img
-                      src={item.image || "/13.jpeg"}
-                      alt={item.title}
-                      className="w-full h-80 object-cover"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.7 }}
-                    />
+                    <div className="aspect-[4/5] overflow-hidden">
+                      <img
+                        src={item.image || "/13.jpeg"}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
 
-                    {/* Overlay */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-                    />
+                    {/* Clean Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                     {/* Content Overlay */}
-                    <motion.div
-                      initial={{ y: "100%" }}
-                      whileHover={{ y: 0 }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
-                      className="absolute bottom-0 left-0 right-0 p-6 text-white"
-                    >
-                      <motion.h3
-                        initial={{ opacity: 0, y: 20 }}
-                        whileHover={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-xl font-bold mb-2"
-                      >
-                        {item.title}
-                      </motion.h3>
-                      <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileHover={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-amber-200 mb-3 flex items-center"
-                      >
-                        <span className="mr-2">📍</span>
-                        {item.location}
-                      </motion.p>
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileHover={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="flex items-center justify-between"
-                      >
-                        <div className="flex items-center space-x-2">
-                          <motion.div
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-                          >
-                            <Heart className="h-4 w-4 text-amber-400" />
-                          </motion.div>
-                          <span className="text-sm">{item.likes}</span>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                      <div className="flex items-center justify-between text-sm">
+                        <div className="flex items-center">
+                          <MapPin className="h-4 w-4 mr-1" />
+                          <span>{item.location}</span>
                         </div>
-                        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                          <Button
-                            size="sm"
-                            className="bg-white/20 backdrop-blur-sm hover:bg-white hover:text-gray-900 border-0 rounded-full"
-                          >
-                            <Eye className="h-4 w-4 mr-1" />
-                            View
-                          </Button>
-                        </motion.div>
-                      </motion.div>
-                    </motion.div>
+                        <span className="text-amber-200">{item.year}</span>
+                      </div>
+                    </div>
 
-                    {/* Top Badge */}
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileHover={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2"
-                    >
-                      <Heart className="h-4 w-4 text-amber-600" />
-                    </motion.div>
+                    {/* View Button */}
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Button
+                        size="sm"
+                        className="bg-white/90 hover:bg-white text-gray-900 border-0 rounded-full w-10 h-10 p-0"
+                      >
+                        <Eye className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </Card>
               </motion.div>
@@ -347,52 +199,54 @@ export function Gallery() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Load More Section */}
+        {/* Professional CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center"
         >
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-            className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/60 inline-block"
-          >
-            <motion.h3
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-2xl font-bold text-gray-800 mb-4"
-            >
-              Want to see more of our work?
-            </motion.h3>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              className="text-gray-600 mb-6"
-            >
-              Discover hundreds of beautiful weddings and events in our complete portfolio.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 hover:from-amber-700 hover:via-yellow-700 hover:to-amber-800 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <Crown className="mr-2 h-5 w-5" />
-                View Complete Gallery
+          <div className="bg-gray-50 rounded-2xl p-12 md:p-16">
+            <h3 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">Interested in Our Work?</h3>
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              View our complete portfolio and see how we can bring your vision to life with our professional event
+              planning services.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+              <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white font-medium px-8 py-3 flex-1">
+                View Full Portfolio
               </Button>
-            </motion.div>
-          </motion.div>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-amber-600 text-amber-600 hover:bg-amber-50 font-medium px-8 py-3 flex-1 bg-white"
+              >
+                Contact Us
+              </Button>
+            </div>
+
+            {/* Simple Stats */}
+            <div className="flex items-center justify-center space-x-8 mt-8 text-sm text-gray-500">
+              <div className="flex items-center space-x-1">
+                <Star className="h-4 w-4 text-amber-500" />
+                <span>500+ Events</span>
+              </div>
+              <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+              <div className="flex items-center space-x-1">
+                <Heart className="h-4 w-4 text-red-500" />
+                <span>8 Years Experience</span>
+              </div>
+              <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+              <div>
+                <span>Professional Excellence</span>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
   )
 }
+
+export default Gallery
