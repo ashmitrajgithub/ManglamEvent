@@ -195,7 +195,7 @@ export function Navbar() {
                     <div className="space-y-4">
                       <div className="flex items-center text-gray-600">
                         <Phone className="h-4 w-4 mr-3 text-amber-700" />
-                        <span className="text-sm">+91 98765 43210</span>
+                        <span className="text-sm">+91 76350 31522</span>
                       </div>
                       <div className="flex items-center text-gray-600">
                         <Mail className="h-4 w-4 mr-3 text-amber-700" />
