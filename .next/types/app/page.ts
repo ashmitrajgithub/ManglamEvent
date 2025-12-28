@@ -1,4 +1,4 @@
-// File: /app/app/page.tsx
+// File: /Users/ashmitraj/Documents/GitHub/ManglamEvent/app/page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
