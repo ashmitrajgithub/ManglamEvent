@@ -4,8 +4,11 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Phone, Mail } from "lucide-react"
+import { Menu, X, Phone } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+
+const PHONE = "+91 76350 31522"
+const WHATSAPP = "https://wa.me/917635031522?text=Hello%20Manglam%20Event%2C%20I%20would%20like%20to%20inquire%20about%20your%20services."
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -14,12 +17,9 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-
-      // Update active section
-      const sections = ["home", "about", "services", "gallery", "contact"]
-      const scrollPosition = window.scrollY + 100
-
+      setIsScrolled(window.scrollY > 40)
+      const sections = ["home", "about", "services", "gallery", "planner", "testimonials", "contact"]
+      const scrollPosition = window.scrollY + 120
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
@@ -31,103 +31,90 @@ export function Navbar() {
         }
       }
     }
-
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const navItems = [
-    { name: "Home", href: "#home", id: "home" },
-    { name: "About", href: "#about", id: "about" },
-    { name: "Services", href: "#services", id: "services" },
-    { name: "Gallery", href: "#gallery", id: "gallery" },
-    { name: "Contact", href: "#contact", id: "contact" },
+    { name: "Home",         href: "#home",         id: "home" },
+    { name: "About",        href: "#about",        id: "about" },
+    { name: "Services",     href: "#services",     id: "services" },
+    { name: "Gallery",      href: "#gallery",      id: "gallery" },
+    { name: "Planner",      href: "#planner",      id: "planner" },
+    { name: "Testimonials", href: "#testimonials", id: "testimonials" },
+    { name: "Contact",      href: "#contact",      id: "contact" },
   ]
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false)
     const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
     <>
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          isScrolled ? "bg-white/95 backdrop-blur-xl shadow-sm border-b border-gray-100/50" : "bg-transparent"
+          isScrolled
+            ? "bg-black/90 backdrop-blur-xl border-b border-white/8 shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
+            : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-5 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link href="/" className="block">
-                <Image
-                  src="/Logoico.png"
-                  alt="Manglam Event"
-                  width={160}
-                  height={50}
-                  className="h-10 w-auto"
-                  priority
-                />
-              </Link>
-            </div>
+            <Link href="/" className="flex-shrink-0 block">
+              <Image
+                src="/Logoico.png"
+                alt="Manglam Event"
+                width={160}
+                height={50}
+                className="h-10 w-auto brightness-110"
+                priority
+              />
+            </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-12">
+            {/* Desktop Nav */}
+            <div className="hidden lg:flex items-center gap-8">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    handleNavClick(item.href)
-                  }}
-                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 ${
-                    isScrolled
-                      ? activeSection === item.id
-                        ? "text-amber-700"
-                        : "text-gray-800 hover:text-amber-700"
-                      : activeSection === item.id
-                        ? "text-white"
-                        : "text-white/90 hover:text-white"
+                  onClick={(e) => { e.preventDefault(); handleNavClick(item.href) }}
+                  className={`relative text-xs font-medium tracking-widest uppercase transition-all duration-300 ${
+                    activeSection === item.id
+                      ? "text-amber-400"
+                      : "text-white/70 hover:text-white"
                   }`}
                 >
                   {item.name}
                   {activeSection === item.id && (
-                    <span
-                      className={`absolute -bottom-1 left-0 right-0 h-px ${isScrolled ? "bg-amber-700" : "bg-white"}`}
+                    <motion.span
+                      layoutId="nav-indicator"
+                      className="absolute -bottom-1 left-0 right-0 h-px bg-amber-400"
                     />
                   )}
                 </Link>
               ))}
             </div>
 
-            {/* Desktop Actions */}
-            <div className="hidden lg:flex items-center space-x-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                className={`font-medium transition-all duration-300 ${
-                  isScrolled
-                    ? "text-gray-700 hover:text-amber-700 hover:bg-amber-50"
-                    : "text-white/90 hover:text-white hover:bg-white/10"
-                }`}
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center gap-3">
+              <a
+                href={`tel:${PHONE}`}
+                className="flex items-center gap-2 text-xs text-white/60 hover:text-amber-400 transition-colors font-medium tracking-wide"
               >
-                <Phone className="h-4 w-4 mr-2" />
-                +91 98765 43210
-              </Button>
-
-              <Button
-                size="sm"
-                className={`font-medium px-6 py-2 transition-all duration-300 ${
-                  isScrolled ? "bg-amber-700 hover:bg-amber-800 text-white" : "bg-white text-gray-900 hover:bg-gray-100"
-                }`}
-              >
-                Get Quote
-              </Button>
+                <Phone className="h-3.5 w-3.5" />
+                {PHONE}
+              </a>
+              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+                <Button
+                  size="sm"
+                  className="bg-amber-500 hover:bg-amber-400 text-black font-semibold px-5 py-2 rounded-full transition-all hover:scale-105 text-xs tracking-wide"
+                >
+                  Get Free Quote
+                </Button>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -135,11 +122,9 @@ export function Navbar() {
               variant="ghost"
               size="sm"
               onClick={() => setIsMobileMenuOpen(true)}
-              className={`lg:hidden p-2 ${
-                isScrolled ? "text-gray-800 hover:bg-gray-100" : "text-white hover:bg-white/10"
-              }`}
+              className="lg:hidden p-2 text-white hover:bg-white/10 rounded-full"
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" />
             </Button>
           </div>
         </div>
@@ -153,65 +138,70 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 lg:hidden"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 lg:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
             />
-
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="fixed top-0 right-0 h-full w-80 bg-white z-50 lg:hidden shadow-2xl"
+              className="fixed top-0 right-0 h-full w-80 bg-zinc-950 border-l border-white/10 z-50 lg:hidden shadow-2xl"
             >
               <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between p-6 border-b border-gray-100">
-                  <Image src="/Logoico.png" alt="Manglam Event" width={140} height={45} className="h-8 w-auto" />
-                  <Button variant="ghost" size="sm" onClick={() => setIsMobileMenuOpen(false)} className="p-2">
+                {/* Header */}
+                <div className="flex items-center justify-between p-6 border-b border-white/10">
+                  <Image src="/Logoico.png" alt="Manglam Event" width={130} height={42} className="h-8 w-auto brightness-110" />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-full"
+                  >
                     <X className="h-5 w-5" />
                   </Button>
                 </div>
 
-                <div className="flex-1 px-6 py-8">
-                  <nav className="space-y-8">
-                    {navItems.map((item) => (
-                      <Link
+                {/* Nav Links */}
+                <div className="flex-1 px-6 py-8 overflow-y-auto">
+                  <nav className="space-y-1">
+                    {navItems.map((item, index) => (
+                      <motion.div
                         key={item.name}
-                        href={item.href}
-                        onClick={(e) => {
-                          e.preventDefault()
-                          handleNavClick(item.href)
-                        }}
-                        className={`block text-lg font-medium transition-colors duration-300 ${
-                          activeSection === item.id ? "text-amber-700" : "text-gray-800 hover:text-amber-700"
-                        }`}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.06 }}
                       >
-                        {item.name}
-                      </Link>
+                        <Link
+                          href={item.href}
+                          onClick={(e) => { e.preventDefault(); handleNavClick(item.href) }}
+                          className={`block py-3 px-4 rounded-xl text-sm font-medium tracking-wider uppercase transition-all duration-200 ${
+                            activeSection === item.id
+                              ? "bg-amber-500/10 text-amber-400 border border-amber-500/20"
+                              : "text-white/60 hover:text-white hover:bg-white/5"
+                          }`}
+                        >
+                          {item.name}
+                        </Link>
+                      </motion.div>
                     ))}
                   </nav>
 
-                  <div className="mt-12 pt-8 border-t border-gray-100">
-                    <div className="space-y-4">
-                      <div className="flex items-center text-gray-600">
-                        <Phone className="h-4 w-4 mr-3 text-amber-700" />
-                        <span className="text-sm">+91 76350 31522</span>
-                      </div>
-                      <div className="flex items-center text-gray-600">
-                        <Mail className="h-4 w-4 mr-3 text-amber-700" />
-                        <span className="text-sm">info@manglamevent.com</span>
-                      </div>
+                  <div className="mt-10 pt-8 border-t border-white/10 space-y-4">
+                    <div className="flex items-center gap-3 text-white/50">
+                      <Phone className="h-4 w-4 text-amber-500 flex-shrink-0" />
+                      <a href={`tel:${PHONE}`} className="text-sm hover:text-amber-400 transition-colors">{PHONE}</a>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-6 border-t border-gray-100">
-                  <Button
-                    className="w-full bg-amber-700 hover:bg-amber-800 text-white font-medium py-3"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Get Free Quote
-                  </Button>
+                {/* Bottom CTA */}
+                <div className="p-6 border-t border-white/10">
+                  <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="block">
+                    <Button className="w-full bg-amber-500 hover:bg-amber-400 text-black font-bold py-3 rounded-xl transition-all hover:scale-[1.02]">
+                      Get Free Quote on WhatsApp
+                    </Button>
+                  </a>
                 </div>
               </div>
             </motion.div>

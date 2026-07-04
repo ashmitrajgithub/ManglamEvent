@@ -1,361 +1,217 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Star, Quote, ChevronLeft, ChevronRight, Heart } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import AOS styles
+import { useState, useEffect, useRef } from "react"
+import { motion, AnimatePresence, useInView } from "framer-motion"
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
+
+const testimonials = [
+  {
+    name: "Priya & Rahul Sharma",
+    event: "Destination Wedding in Goa",
+    rating: 5,
+    text: "Manglam Event made our dream wedding come true! From the beautiful beachside setup to the seamless coordination, everything was absolutely perfect. Our guests are still talking about how magical it was. The attention to detail was simply incredible!",
+    image: "/01.jpeg",
+    location: "Goa",
+    date: "December 2023",
+    initials: "PR",
+  },
+  {
+    name: "Sneha & Arjun Patel",
+    event: "Royal Wedding in Rajasthan",
+    rating: 5,
+    text: "The team at Manglam Event exceeded all our expectations. The royal décor, flawless execution and personal attention made our wedding day absolutely perfect. We couldn't have asked for a better experience. Highly recommended to every couple!",
+    image: "/02.jpeg",
+    location: "Udaipur",
+    date: "November 2023",
+    initials: "SA",
+  },
+  {
+    name: "Kavya & Vikram Singh",
+    event: "Modern Wedding in Patna",
+    rating: 5,
+    text: "Professional, creative, and absolutely wonderful to work with. Manglam Event turned our vision into reality and created memories that will last a lifetime. Every single moment was perfectly planned and executed. Thank you for making our day so special!",
+    image: "/05.jpeg",
+    location: "Patna",
+    date: "October 2023",
+    initials: "KV",
+  },
+  {
+    name: "Ritu & Sameer Gupta",
+    event: "Corporate Annual Celebration",
+    rating: 5,
+    text: "We hired Manglam Event for our company's annual celebration and they delivered beyond our expectations. The event was professional, engaging, and perfectly organized. Our entire team loved it and the feedback from attendees was outstanding!",
+    image: "/04.jpeg",
+    location: "Delhi",
+    date: "September 2023",
+    initials: "RS",
+  },
+]
 
 export function Testimonials() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
+  const [current, setCurrent] = useState(0)
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-
-  const testimonials = [
-    {
-      name: "Priya & Rahul Sharma",
-      event: "Destination Wedding in Goa",
-      rating: 5,
-      text: "Manglam Event made our dream wedding come true! From the beautiful beachside setup to the seamless coordination, everything was absolutely perfect. Our guests are still talking about how magical and unforgettable our wedding was. The attention to detail was incredible!",
-      clientImage: "/r1.jpg", // Client image
-      uniqueImage: "/r2.jpg", // Unique image for this testimonial
-      location: "Goa",
-      date: "December 2023",
-    },
-    {
-      name: "Sneha & Arjun Patel",
-      event: "Royal Wedding in Rajasthan",
-      rating: 5,
-      text: "The team at Manglam Event exceeded all our expectations and more. The attention to detail, the beautiful royal decor, and the flawless execution made our wedding day absolutely perfect. We couldn't have asked for a better wedding planning experience. Highly recommended!",
-      clientImage: "/images/client2.jpg", // Client image
-      uniqueImage: "/r1.jpg", // Unique image for this testimonial
-      location: "Udaipur",
-      date: "November 2023",
-    },
-    {
-      name: "Kavya & Vikram Singh",
-      event: "Modern Wedding in Mumbai",
-      rating: 5,
-      text: "Professional, creative, and absolutely wonderful to work with. Manglam Event turned our vision into reality and created memories that will last a lifetime. Every moment was perfectly planned and executed. Thank you for making our day so incredibly special!",
-      clientImage: "/images/client3.jpg", // Client image
-      uniqueImage: "/images/mumbai-wedding.jpg", // Unique image for this testimonial
-      location: "Mumbai",
-      date: "October 2023",
-    },
-    {
-      name: "Ritu & Sameer Gupta",
-      event: "Corporate Annual Celebration",
-      rating: 5,
-      text: "We hired Manglam Event for our company's annual celebration, and they delivered beyond our expectations. The event was professional, engaging, and perfectly organized. Our entire team loved it and we received amazing feedback from all attendees!",
-      clientImage: "/images/client4.jpg", // Client image
-      uniqueImage: "/images/delhi-celebration.jpg", // Unique image for this testimonial
-      location: "Delhi",
-      date: "September 2023",
-    },
-  ]
+  const isInView = useInView(ref, { once: true, margin: "-80px" })
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 8000)
+      setCurrent((prev) => (prev + 1) % testimonials.length)
+    }, 7000)
     return () => clearInterval(timer)
-  }, [testimonials.length])
+  }, [])
 
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-  }
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1000, // Animation duration
-      once: true, // Whether animation should happen only once
-    });
-  }, []);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
-  }
+  const prev = () => setCurrent((p) => (p - 1 + testimonials.length) % testimonials.length)
+  const next = () => setCurrent((p) => (p + 1) % testimonials.length)
 
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden bg-gray-50" ref={ref}>
+    <section id="testimonials" className="py-24 md:py-32 bg-zinc-950 relative overflow-hidden" ref={ref}>
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50"></div>
+      <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/4 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-600/3 rounded-full blur-[80px] pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-5 md:px-8">
         {/* Header */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="text-center mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          <motion.div variants={itemVariants} className="flex items-center justify-center space-x-3 mb-6">
-            <Heart className="h-8 w-8 text-amber-600" />
-            <span className="text-amber-700 font-semibold text-lg tracking-wide uppercase">Testimonials</span>
-            <Heart className="h-8 w-8 text-amber-600" />
-          </motion.div>
-
-          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-
-<span className="text-gray-900">What Our Clients</span>
-
-<br />
-
-<span className="bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 bg-clip-text text-transparent">
-
-  Say About Us
-
-</span>
-
-</motion.h2>
-          <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Don't just take our word for it. Here's what our happy couples and clients have to say about their
-            incredible experience with Manglam Event.
-          </motion.p>
+          <p className="section-label text-amber-400 mb-4">Love Stories</p>
+          <h2 className="section-title text-4xl md:text-5xl lg:text-6xl text-white mb-5">
+            What Our{" "}
+            <span className="text-gold-gradient italic">Clients Say</span>
+          </h2>
+          <p className="text-white/40 max-w-2xl mx-auto text-base">
+            Hundreds of happy couples and clients trust Manglam Event to make their most important moments unforgettable.
+          </p>
         </motion.div>
 
-        {/* Main Testimonial */}
+        {/* Main testimonial card */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative max-w-6xl mx-auto mb-16"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative max-w-6xl mx-auto mb-10"
         >
-          <Card className="border-0 shadow-2xl bg-white rounded-lg overflow-hidden transition-transform transform hover:scale-105">
-            <CardContent className="p-0">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentTestimonial}
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -100 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="grid lg:grid-cols-2"
-                >
-                  {/* Content Side */}
-                  <div className="p-12 lg:p-16 flex flex-col justify-center">
-                    <motion.div
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-                    >
-                      <Quote className="h-16 w-16 text-amber-600 mb-8" />
-                    </motion.div>
+          <div className="glass rounded-3xl border border-white/8 overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, x: 60 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -60 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="grid lg:grid-cols-2"
+              >
+                {/* Content */}
+                <div className="p-10 md:p-14 flex flex-col justify-center">
+                  <Quote className="h-12 w-12 text-amber-500/40 mb-6" />
 
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 }}
-                      className="flex justify-start mb-8"
-                    >
-                      {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.6 + i * 0.1, type: "spring", stiffness: 200 }}
-                        >
-                          <Star className="h-7 w-7 fill-amber-400 text-amber-400" />
-                        </motion.div>
-                      ))}
-                    </motion.div>
-
-                    <motion.p
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.7 }}
-                      className="text-xl lg:text-2xl text-gray-700 mb-10 leading-relaxed italic font-light"
-                    >
-                      "{testimonials[currentTestimonial].text}"
-                    </motion.p>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.9 }}
-                      className="flex items-center space-x-6"
-                    >
-                      <motion.img
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                        src={testimonials[currentTestimonial].clientImage}
-                        alt={testimonials[currentTestimonial].name}
-                        className="w-20 h-20 rounded-full object-cover border-4 border-amber-200 shadow-lg transition-transform transform hover:scale-105"
-                      />
-                      <div>
-                        <h4 className="text-2xl font-bold text-gray-900 mb-1">
-                          {testimonials[currentTestimonial].name}
-                        </h4>
-                        <p className="text-amber-700 font-semibold mb-1">{testimonials[currentTestimonial].event}</p>
-                        <p className="text-gray-500 text-sm">
-                          {testimonials[currentTestimonial].location} • {testimonials[currentTestimonial].date}
-                        </p>
-                      </div>
-                    </motion.div>
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-6">
+                    {Array.from({ length: testimonials[current].rating }).map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
+                    ))}
                   </div>
 
-                  {/* Image Side */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 1.1 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4, duration: 0.8 }}
-                    className="relative h-96 lg:h-auto"
-                  >
-                    <img
-                      src={testimonials[currentTestimonial].uniqueImage}
-                      alt={testimonials[currentTestimonial].event}
-                      className="absolute inset-0 w-full h-full object-cover rounded-lg"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/20 rounded-lg" />
-                  </motion.div>
-                </motion.div>
-              </AnimatePresence>
-            </CardContent>
-          </Card>
+                  <p className="font-serif text-xl md:text-2xl text-white/80 italic leading-relaxed mb-8">
+                    "{testimonials[current].text}"
+                  </p>
 
-          {/* Navigation Buttons */}
-          <motion.div
-            whileHover={{ backgroundColor: "rgba(255, 235, 59, 0.2)" }} // Change background color on hover
-            transition={{ duration: 0.3 }}
-          >
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevTestimonial}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/95 backdrop-blur-sm border-2 border-amber-600 text-amber-700 w-14 h-14 rounded-full shadow-lg transition-all duration-300"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </Button>
-          </motion.div>
+                  {/* Author */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-full bg-amber-500/20 border-2 border-amber-500/30 flex items-center justify-center flex-shrink-0">
+                      <span className="font-serif text-lg font-semibold text-amber-400">
+                        {testimonials[current].initials}
+                      </span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white text-base">{testimonials[current].name}</h4>
+                      <p className="text-amber-400 text-sm">{testimonials[current].event}</p>
+                      <p className="text-white/30 text-xs mt-0.5">
+                        {testimonials[current].location} · {testimonials[current].date}
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-          <motion.div
-            whileHover={{ backgroundColor: "rgba(255, 235, 59, 0.2)" }} // Change background color on hover
-            transition={{ duration: 0.3 }}
+                {/* Image */}
+                <div className="relative h-64 lg:h-auto min-h-[280px]">
+                  <img
+                    src={testimonials[current].image}
+                    alt={testimonials[current].event}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/60 via-transparent to-transparent lg:block hidden" />
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Nav buttons */}
+          <button
+            onClick={prev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 backdrop-blur-sm border border-white/15 text-white hover:border-amber-500/40 hover:bg-amber-500/10 transition-all duration-200 flex items-center justify-center z-10 hidden lg:flex"
           >
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextTestimonial}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/95 backdrop-blur-sm border-2 border-amber-600 text-amber-700 w-14 h-14 rounded-full shadow-lg transition-all duration-300"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </Button>
-          </motion.div>
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 backdrop-blur-sm border border-white/15 text-white hover:border-amber-500/40 hover:bg-amber-500/10 transition-all duration-200 flex items-center justify-center z-10 hidden lg:flex"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </motion.div>
 
-        {/* Testimonial Indicators */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex justify-center space-x-4 mb-16"
-        >
-          {testimonials.map((testimonial, index) => (
-            <motion.button
-              key={index}
-              onClick={() => setCurrentTestimonial(index)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className={`group transition-all duration-300`}
-            >
-              <motion.div
-                animate={{
-                  scale: index === currentTestimonial ? 1.1 : 1,
-                  rotate: index === currentTestimonial ? [0, 5, -5, 0] : 0,
-                }}
-                transition={{
-                  scale: { duration: 0.3 },
-                  rotate: { duration: 2, repeat: Number.POSITIVE_INFINITY },
-                }}
-                className={`w-16 h-16 rounded-full border-4 overflow-hidden transition-all duration-300 ${
-                  index === currentTestimonial ? "border-amber-600 shadow-lg" : "border-gray-300 hover:border-amber-400"
+        {/* Dots & mobile nav */}
+        <div className="flex items-center justify-center gap-4">
+          <button onClick={prev} className="w-9 h-9 rounded-full border border-white/15 text-white hover:border-amber-500/40 transition-colors flex items-center justify-center lg:hidden">
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <div className="flex gap-2">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  i === current
+                    ? "w-8 h-2 bg-amber-400"
+                    : "w-2 h-2 bg-white/20 hover:bg-white/40"
                 }`}
-              >
-                <img
-                  src={testimonial.clientImage}
-                  alt={testimonial.name}
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-              <motion.div
-                animate={{
-                  color: index === currentTestimonial ? "#b45309" : "#9ca3af",
-                }}
-                className="mt-2 text-xs font-medium transition-colors duration-300"
-              >
-                {testimonial.name.split(" ")[0]}
-              </motion.div>
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          whileHover={{ scale: 1.02 }}
-          className="bg-white/95 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-white/70"
-        >
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="grid md:grid-cols-4 gap-8 text-center"
-          >
-            {[
-              { number: "500+", label: "Happy Couples", color: "text-amber-700" },
-              { number: "4.9/5", label: "Average Rating", color: "text-yellow-600" },
-              { number: "98%", label: "Satisfaction Rate", color: "text-orange-600" },
-              { number: "1000+", label: "Events Completed", color: "text-amber-800" },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.1, y: -10 }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={isInView ? { scale: 1 } : { scale: 0 }}
-                  transition={{ delay: 1 + index * 0.1, type: "spring", stiffness: 200 }}
-                  className={`text-4xl font-bold ${stat.color} mb-2`}
-                >
-                  {stat.number}
-                </motion.div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </motion.div>
+              />
             ))}
-          </motion.div>
+          </div>
+          <button onClick={next} className="w-9 h-9 rounded-full border border-white/15 text-white hover:border-amber-500/40 transition-colors flex items-center justify-center lg:hidden">
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-16 glass rounded-2xl border border-white/8 p-8"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              { number: "500+",  label: "Happy Couples" },
+              { number: "4.9/5", label: "Average Rating" },
+              { number: "98%",   label: "Satisfaction Rate" },
+              { number: "1000+", label: "Events Completed" },
+            ].map((stat, i) => (
+              <div key={i}>
+                <div className="font-serif text-3xl md:text-4xl font-semibold text-amber-400 mb-1">
+                  {stat.number}
+                </div>
+                <div className="text-white/35 text-sm">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
   )
 }
+
+export default Testimonials
