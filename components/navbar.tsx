@@ -55,23 +55,14 @@ export function Navbar() {
     <>
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-black/90 backdrop-blur-xl border-b border-white/8 shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
-            : "bg-transparent"
+          "bg-[#fbf8f2]/90 backdrop-blur-xl border-b border-[#e7d8c8] shadow-[0_4px_24px_rgba(87,54,28,0.06)]"
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0 block">
-              <Image
-                src="/Logoico.png"
-                alt="Manglam Event"
-                width={160}
-                height={50}
-                className="h-10 w-auto brightness-110"
-                priority
-              />
+            <Link href="/" className="flex-shrink-0 block" aria-label="Manglam Event home">
+              <span className="flex flex-col leading-none text-[#231812]"><span className="font-serif text-[22px] font-semibold tracking-[.08em]">MANGLAM</span><span className="mt-1 text-[8px] font-bold tracking-[.42em] text-[#a45f26]">EVENT</span></span>
             </Link>
 
             {/* Desktop Nav */}
@@ -84,7 +75,7 @@ export function Navbar() {
                   className={`relative text-xs font-medium tracking-widest uppercase transition-all duration-300 ${
                     activeSection === item.id
                       ? "text-amber-400"
-                      : "text-white/70 hover:text-white"
+                      : "text-[#75665b] hover:text-[#a45f26]"
                   }`}
                 >
                   {item.name}
@@ -102,7 +93,7 @@ export function Navbar() {
             <div className="hidden lg:flex items-center gap-3">
               <a
                 href={`tel:${PHONE}`}
-                className="flex items-center gap-2 text-xs text-white/60 hover:text-amber-400 transition-colors font-medium tracking-wide"
+                className="flex items-center gap-2 text-xs text-[#75665b] hover:text-[#a45f26] transition-colors font-medium tracking-wide"
               >
                 <Phone className="h-3.5 w-3.5" />
                 {PHONE}
@@ -122,7 +113,7 @@ export function Navbar() {
               variant="ghost"
               size="sm"
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-white hover:bg-white/10 rounded-full"
+              className="lg:hidden p-2 text-[#4e4138] hover:bg-[#efe1d2] rounded-full"
             >
               <Menu className="h-5 w-5" />
             </Button>
@@ -151,7 +142,7 @@ export function Navbar() {
               <div className="flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-center justify-between p-6 border-b border-white/10">
-                  <Image src="/Logoico.png" alt="Manglam Event" width={130} height={42} className="h-8 w-auto brightness-110" />
+                  <span className="flex flex-col leading-none text-[#231812]"><span className="font-serif text-xl font-semibold tracking-[.08em]">MANGLAM</span><span className="mt-1 text-[7px] font-bold tracking-[.4em] text-[#a45f26]">EVENT</span></span>
                   <Button
                     variant="ghost"
                     size="sm"

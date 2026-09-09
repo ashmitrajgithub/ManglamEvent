@@ -296,7 +296,7 @@ function HeroCard3D({ service, isInView }: { service: typeof services[0]; isInVi
                   animate={hovered
                     ? { scale: 1.1, rotate: [0, -5, 5, 0], y: -4 }
                     : { scale: 1, rotate: 0, y: 0 }}
-                  transition={{ duration: 0.5, type: "spring" }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
                   className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 relative"
                   style={{
                     background: `linear-gradient(135deg, rgba(${service.accentRgb},0.25), rgba(${service.accentRgb},0.06))`,

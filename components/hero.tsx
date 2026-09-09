@@ -1,192 +1,66 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { ChevronDown } from "lucide-react"
+import { useEffect, useRef, useState, useCallback } from "react"
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { ArrowRight, Check, ChevronDown, Play, Star } from "lucide-react"
 import Image from "next/image"
 
-const WHATSAPP = "https://wa.me/917635031522?text=Hello%20Manglam%20Event%2C%20I%20would%20like%20to%20plan%20my%20event."
+const SERVICES = ["Weddings", "Corporate events", "Live experiences"]
 
-const STATS = [
-  { value: "500+", label: "Events" },
-  { value: "10+",  label: "Years" },
-  { value: "4.9★", label: "Rating" },
-  { value: "98%",  label: "Happy Clients" },
-]
+const headingLine = {
+  hidden: { y: "110%", opacity: 0 },
+  visible: { y: "0%", opacity: 1 },
+}
 
 export default function Hero() {
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [ready, setReady] = useState(false)
+  const visualRef = useRef<HTMLDivElement>(null)
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [2.5, -2.5]), { stiffness: 150, damping: 26 })
+  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-3.5, 3.5]), { stiffness: 150, damping: 26 })
 
-  useEffect(() => {
-    setIsLoaded(true)
-  }, [])
+  useEffect(() => setReady(true), [])
 
-  const handleScrollToGallery = () => {
-    document.getElementById("gallery")?.scrollIntoView({ behavior: "smooth" })
-  }
-  const handleScrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-  }
+  const onPointerMove = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
+    const bounds = visualRef.current?.getBoundingClientRect()
+    if (!bounds) return
+    mx.set((event.clientX - bounds.left) / bounds.width - 0.5)
+    my.set((event.clientY - bounds.top) / bounds.height - 0.5)
+  }, [mx, my])
+
+  const resetPointer = useCallback(() => { mx.set(0); my.set(0) }, [mx, my])
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-    >
-      {/* Background image — keep the beautiful photo, just lighten the overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/11.jpeg"
-          alt="Manglam Event — Luxury Wedding"
-          fill
-          className="object-cover object-center scale-105"
-          priority
-          sizes="100vw"
-        />
-        {/* Lighter overlay so colors feel warm & bright */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/55 via-white/35 to-white/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-50/30 via-transparent to-amber-50/30" />
-      </div>
+    <section id="home" className="relative min-h-screen overflow-hidden bg-[#fbf8f2] text-[#201712]">
+      <div className="pointer-events-none absolute -right-64 -top-56 h-[40rem] w-[40rem] rounded-full bg-[#f3d8ad]/45 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-[-16rem] left-[-12rem] h-[34rem] w-[34rem] rounded-full bg-[#ebd1b1]/30 blur-3xl" />
 
-      {/* Ambient glow blobs */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400/15 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-yellow-300/10 rounded-full blur-[100px]" />
-      </div>
-
-      {/* Decorative rings */}
-      <motion.div
-        className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isLoaded ? 1 : 0 }}
-        transition={{ duration: 2, delay: 0.5 }}
-      >
-        <div className="w-[32rem] h-[32rem] rounded-full border border-amber-600/15 absolute" />
-        <div className="w-[42rem] h-[42rem] rounded-full border border-amber-600/8 absolute" />
-      </motion.div>
-
-      {/* Main Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-24">
-        {/* Label */}
-        <motion.p
-          className="text-amber-700 text-xs font-bold uppercase tracking-[0.35em] mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          Bihar's Premier Wedding &amp; Event Planning
-        </motion.p>
-
-        {/* Headline */}
-        <motion.h1
-          className="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold leading-[1.05] text-stone-900 mb-6"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
-        >
-          We Don't{" "}
-          <span
-            className="italic"
-            style={{
-              background: "linear-gradient(135deg, #b45309, #d97706, #92400e)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >Organize</span>
-          <br />
-          Events —{" "}
-          <span
-            style={{
-              background: "linear-gradient(135deg, #b45309, #d97706, #92400e)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >We Create</span>
-          <br />
-          <span className="italic">Experiences</span>
-        </motion.h1>
-
-        {/* Sub */}
-        <motion.p
-          className="text-stone-600 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          From intimate mandaps to royal celebrations, every detail is crafted to feel
-          timeless, elegant, and deeply personal.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 items-center justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          <Button
-            size="lg"
-            onClick={handleScrollToContact}
-            className="rounded-full bg-amber-600 hover:bg-amber-700 text-white font-semibold px-10 py-6 text-base transition-all hover:scale-105 shadow-[0_8px_30px_rgba(180,83,9,0.35)]"
-          >
-            Plan Your Event
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            onClick={handleScrollToGallery}
-            className="rounded-full border-stone-800/30 px-10 py-6 text-base text-stone-800 hover:bg-stone-900/8 hover:border-stone-800/60 backdrop-blur-sm transition-all hover:scale-105"
-          >
-            View Our Work
-          </Button>
-        </motion.div>
-      </div>
-
-      {/* Stats bar */}
-      <motion.div
-        className="absolute bottom-24 left-0 right-0 z-10 flex justify-center"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.4 }}
-      >
-        <div
-          className="rounded-2xl px-8 py-4 flex gap-8 md:gap-12"
-          style={{
-            background: "rgba(255,252,245,0.85)",
-            backdropFilter: "blur(20px)",
-            border: "1px solid rgba(180,83,9,0.15)",
-            boxShadow: "0 4px 30px rgba(0,0,0,0.08)",
-          }}
-        >
-          {STATS.map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="font-serif text-2xl md:text-3xl font-semibold text-amber-700 leading-none">
-                {stat.value}
-              </div>
-              <div className="text-stone-500 text-xs mt-1 tracking-wide">{stat.label}</div>
+      <div className="relative mx-auto flex min-h-screen max-w-[1480px] flex-col px-6 pb-8 pt-28 sm:px-10 lg:px-16 lg:pt-32 xl:px-24">
+        <div className="flex flex-1 items-center">
+          <div className="grid w-full grid-cols-1 items-center gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
+            <div className="relative z-10 max-w-2xl">
+              <motion.div initial={{ opacity: 0, y: 15 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .6 }} className="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.3em] text-[#a45f26] sm:text-xs"><span className="h-px w-9 bg-[#a45f26]" /> Manglam Event · Patna, Bihar</motion.div>
+              <motion.h1 initial="hidden" animate={ready ? "visible" : "hidden"} className="font-serif text-[clamp(3.55rem,6.2vw,6.8rem)] font-medium leading-[.86] tracking-[-.065em]"><span className="block overflow-hidden pb-1 sm:whitespace-nowrap"><motion.span variants={headingLine} transition={{ duration: .85, delay: .12, ease: [0.22, 1, 0.36, 1] }} className="block">We make your</motion.span></span><span className="block overflow-hidden pb-1 sm:whitespace-nowrap"><motion.span variants={headingLine} transition={{ duration: .85, delay: .24, ease: [0.22, 1, 0.36, 1] }} className="block"><span className="italic text-[#ae6c32]">biggest</span> moments</motion.span></span><span className="block overflow-hidden pb-1 sm:whitespace-nowrap"><motion.span variants={headingLine} transition={{ duration: .85, delay: .36, ease: [0.22, 1, 0.36, 1] }} className="block">feel effortless.</motion.span></span></motion.h1>
+              <motion.p initial={{ opacity: 0, y: 15 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .7, delay: .38 }} className="mt-9 max-w-lg text-[15px] leading-7 text-[#5c5047]">A full-service event company for celebrations with meaning, atmosphere, and impeccable execution—from the first idea to the final guest goodbye.</motion.p>
+              <motion.div initial={{ opacity: 0, y: 15 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .7, delay: .52 }} className="mt-9 flex flex-wrap items-center gap-5"><button onClick={() => scrollTo("contact")} className="group inline-flex items-center gap-4 rounded-full bg-[#a45f26] px-7 py-4 text-xs font-bold uppercase tracking-[.16em] text-white shadow-[0_12px_28px_rgba(164,95,38,.24)] transition hover:-translate-y-0.5 hover:bg-[#824819]">Start planning <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></button><button onClick={() => scrollTo("gallery")} className="group inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.16em] text-[#675a50] transition hover:text-[#a45f26]"><span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#bd9d7e] transition group-hover:border-[#a45f26] group-hover:bg-[#f2e3d3]"><Play className="ml-0.5 h-3 w-3 fill-current" /></span>See our work</button></motion.div>
+              <motion.div initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : {}} transition={{ duration: .7, delay: .7 }} className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-[#dfcfbd] pt-5">{SERVICES.map((service) => <span key={service} className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em] text-[#806e5e]"><Check className="h-3.5 w-3.5 text-[#a45f26]" />{service}</span>)}</motion.div>
             </div>
-          ))}
-        </div>
-      </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-stone-500 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-      >
-        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-4 h-4" />
-        </motion.div>
-      </motion.div>
+            <motion.div ref={visualRef} onPointerMove={onPointerMove} onPointerLeave={resetPointer} initial={{ opacity: 0, x: 32, scale: .97 }} animate={ready ? { opacity: 1, x: 0, scale: 1 } : {}} transition={{ duration: 1, delay: .2 }} className="relative h-[470px] [perspective:1100px] sm:h-[590px] lg:h-[680px]">
+              <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }} className="absolute inset-0 overflow-hidden rounded-[2.75rem] bg-[#ead6bf] shadow-[0_30px_80px_rgba(77,46,24,.18)]"><Image src="/01.jpeg" alt="Manglam Event floral wedding installation" fill priority sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover object-center brightness-[1.22] saturate-[.88]" /><div className="absolute inset-0 bg-gradient-to-t from-[#21140d]/30 via-transparent to-transparent" /><div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#21140d]/25 to-transparent" />
+                <div style={{ transform: "translateZ(55px)" }} className="absolute left-6 top-6 rounded-full border border-white/35 bg-black/20 px-4 py-2 text-[9px] font-bold uppercase tracking-[.2em] text-white backdrop-blur-md"><span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-[#efb66c]" /> Live beautifully</div>
+                <div style={{ transform: "translateZ(55px)" }} className="absolute bottom-7 left-7 right-7 flex items-end justify-between"><div><p className="text-[9px] font-bold uppercase tracking-[.2em] text-white/65">Featured production</p><p className="mt-1 font-serif text-3xl italic text-white sm:text-4xl">Royal floral evening</p></div><div className="hidden h-12 w-12 items-center justify-center rounded-full border border-white/50 text-white sm:flex"><ArrowRight className="h-4 w-4 -rotate-45" /></div></div>
+              </motion.div>
+              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-8 left-5 rounded-2xl border border-[#e0c5a5] bg-[#fffdf8]/95 px-5 py-4 shadow-xl sm:left-7"><div className="flex items-center gap-2"><div className="flex text-[#bd7b39]"><Star className="h-3 w-3 fill-current" /><Star className="h-3 w-3 fill-current" /><Star className="h-3 w-3 fill-current" /><Star className="h-3 w-3 fill-current" /><Star className="h-3 w-3 fill-current" /></div><span className="text-xs font-bold text-[#6b5b4d]">4.9/5</span></div><p className="mt-1 text-[9px] font-bold uppercase tracking-[.12em] text-[#917a66]">Loved by 500+ clients</p></motion.div>
+              <div className="absolute -right-7 top-1/2 hidden h-32 w-32 -translate-y-1/2 rounded-full border border-dashed border-[#b87531]/45 lg:block" />
+            </motion.div>
+          </div>
+        </div>
+        <motion.div initial={{ opacity: 0, y: 14 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .7, delay: .85 }} className="mt-16 grid max-w-xl grid-cols-3 border-t border-[#dfcfbd] pt-5 lg:mt-12">{[{ value: "500+", label: "Events delivered" }, { value: "10+", label: "Years of expertise" }, { value: "98%", label: "Happy clients" }].map((stat, i) => <div key={stat.label} className={i ? "border-l border-[#dfcfbd] pl-4 sm:pl-7" : ""}><p className="font-serif text-2xl text-[#a45f26] sm:text-3xl">{stat.value}</p><p className="mt-1 text-[9px] font-bold uppercase tracking-[.13em] text-[#806e5e]">{stat.label}</p></div>)}</motion.div>
+      </div>
+      <button onClick={() => scrollTo("about")} className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-[9px] font-bold uppercase tracking-[.25em] text-[#a08066] lg:flex"><span>Discover</span><ChevronDown className="h-4 w-4 animate-bounce" /></button>
     </section>
   )
 }
