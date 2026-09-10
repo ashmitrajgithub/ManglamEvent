@@ -18,7 +18,7 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40)
-      const sections = ["home", "about", "services", "gallery", "planner", "testimonials", "contact"]
+      const sections = ["home", "about", "services", "gallery", "testimonials", "contact"]
       const scrollPosition = window.scrollY + 120
       for (const section of sections) {
         const element = document.getElementById(section)
@@ -40,7 +40,6 @@ export function Navbar() {
     { name: "About",        href: "#about",        id: "about" },
     { name: "Services",     href: "#services",     id: "services" },
     { name: "Gallery",      href: "#gallery",      id: "gallery" },
-    { name: "Planner",      href: "#planner",      id: "planner" },
     { name: "Testimonials", href: "#testimonials", id: "testimonials" },
     { name: "Contact",      href: "#contact",      id: "contact" },
   ]
