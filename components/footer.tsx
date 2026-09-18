@@ -2,7 +2,7 @@ import Link from "next/link"
 import { ArrowUpRight, Facebook, Instagram, Mail, MapPin, MessageCircle, Phone, Youtube } from "lucide-react"
 
 const PHONE = "+91 76350 31522"
-const EMAIL = "info@manglamevent.com"
+const EMAIL = "info@manglamevents.in"
 const WHATSAPP = "https://wa.me/917635031522?text=Hello%20Manglam%20Event%2C%20I%20would%20like%20to%20discuss%20my%20event."
 
 const navigation = [

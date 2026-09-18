@@ -560,7 +560,7 @@ export function BookingConfirmation({ isOpen, onClose, bookingData }: BookingCon
                           <div className="text-center">
                             <Mail className="h-8 w-8 mx-auto mb-3 text-amber-400" />
                             <h3 className="text-lg font-semibold mb-2">Email Us</h3>
-                            <p className="text-gray-300">info@manglamevent.com</p>
+                            <p className="text-gray-300">info@manglamevents.in</p>
                             <p className="text-gray-300">Quick response guaranteed</p>
                           </div>
                           <div className="text-center">

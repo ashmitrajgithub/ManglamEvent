@@ -2,25 +2,25 @@ export default function StructuredData() {
   const localBusiness = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "EventPlanningService"],
-    "@id": "https://manglamevent.com/#organization",
+    "@id": "https://manglamevents.in/#organization",
     name: "Manglam Event Studio",
     alternateName: "Manglam Event",
     description:
       "Premier wedding and event planning company based in Sitamarhi, Bihar. Specialising in luxury weddings, destination weddings, corporate events, concerts, floral decor, and artist management since 2014.",
-    url: "https://manglamevent.com",
+    url: "https://manglamevents.in",
     logo: {
       "@type": "ImageObject",
-      url: "https://manglamevent.com/Logoico.png",
+      url: "https://manglamevents.in/Logoico.png",
       width: 512,
       height: 512,
     },
     image: [
-      "https://manglamevent.com/og-image.png",
-      "https://manglamevent.com/11.jpeg",
-      "https://manglamevent.com/01.jpeg",
+      "https://manglamevents.in/og-image.png",
+      "https://manglamevents.in/11.jpeg",
+      "https://manglamevents.in/01.jpeg",
     ],
     telephone: "+917635031522",
-    email: "info@manglamevent.com",
+    email: "info@manglamevents.in",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Cinema Road, Near Vishal Mega Mart",
@@ -88,17 +88,17 @@ export default function StructuredData() {
   const website = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://manglamevent.com/#website",
-    url: "https://manglamevent.com",
+    "@id": "https://manglamevents.in/#website",
+    url: "https://manglamevents.in",
     name: "Manglam Event Studio",
     description: "Premier Wedding & Event Planning in Bihar, India",
-    publisher: { "@id": "https://manglamevent.com/#organization" },
+    publisher: { "@id": "https://manglamevents.in/#organization" },
     inLanguage: "en-IN",
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://manglamevent.com/?q={search_term_string}",
+        urlTemplate: "https://manglamevents.in/?q={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },
@@ -171,11 +171,11 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://manglamevent.com" },
-      { "@type": "ListItem", position: 2, name: "About Us", item: "https://manglamevent.com/#about" },
-      { "@type": "ListItem", position: 3, name: "Services", item: "https://manglamevent.com/#services" },
-      { "@type": "ListItem", position: 4, name: "Portfolio", item: "https://manglamevent.com/#portfolio" },
-      { "@type": "ListItem", position: 5, name: "Contact", item: "https://manglamevent.com/#contact" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://manglamevents.in" },
+      { "@type": "ListItem", position: 2, name: "About Us", item: "https://manglamevents.in/#about" },
+      { "@type": "ListItem", position: 3, name: "Services", item: "https://manglamevents.in/#services" },
+      { "@type": "ListItem", position: 4, name: "Portfolio", item: "https://manglamevents.in/#portfolio" },
+      { "@type": "ListItem", position: 5, name: "Contact", item: "https://manglamevents.in/#contact" },
     ],
   }
 

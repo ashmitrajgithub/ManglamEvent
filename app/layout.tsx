@@ -6,7 +6,7 @@ import StructuredData from "./structured-data"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
-const BASE_URL = "https://manglamevent.com"
+const BASE_URL = "https://manglamevents.in"
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

@@ -6,7 +6,7 @@ import { motion, useInView } from "framer-motion"
 import { ArrowUpRight, CalendarDays, CheckCircle, Clock3, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react"
 
 const PHONE = "+91 76350 31522"
-const EMAIL = "info@manglamevent.com"
+const EMAIL = "info@manglamevents.in"
 const ADDRESS = "Cinema Road, Near Vishal Mega Mart, Sitamarhi, Bihar – 843302"
 const WHATSAPP = "https://wa.me/917635031522?text=Hello%20Manglam%20Event%2C%20I%20would%20like%20to%20discuss%20my%20event."
 const eventTypes = ["Wedding", "Corporate Event", "Birthday Party", "Cultural Event", "Political Event", "Concert / DJ Night", "Other"]

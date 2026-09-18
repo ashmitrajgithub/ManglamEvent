@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/"],
       },
     ],
-    sitemap: "https://manglamevent.com/sitemap.xml",
-    host: "https://manglamevent.com",
+    sitemap: "https://manglamevents.in/sitemap.xml",
+    host: "https://manglamevents.in",
   }
 }
