@@ -40,8 +40,12 @@ export function Footer() {
             <a href={WHATSAPP} target="_blank" rel="noreferrer" className="group mt-8 inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#efb66c] transition-colors hover:text-white"><span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#c48750]/40 bg-[#c48750]/10 transition group-hover:bg-[#a45f26]"><MessageCircle className="h-4 w-4" /></span>Start a conversation <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
 
             <div className="mt-12 flex items-center gap-3">
-              {[{ label: "Instagram", icon: Instagram }, { label: "Facebook", icon: Facebook }, { label: "YouTube", icon: Youtube }].map(({ label, icon: Icon }) => (
-                <a key={label} href="#" aria-label={label} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-[#c5b1a0] transition-all hover:-translate-y-1 hover:border-[#d8914e] hover:bg-[#a45f26] hover:text-white"><Icon className="h-4 w-4" /></a>
+              {[
+                { label: "Instagram", icon: Instagram, href: "https://www.instagram.com/manglamevent" },
+                { label: "Facebook", icon: Facebook, href: "https://www.facebook.com/manglamevent" },
+                { label: "YouTube", icon: Youtube, href: "https://www.youtube.com/@manglamevent" },
+              ].map(({ label, icon: Icon, href }) => (
+                <a key={label} href={href} target="_blank" rel="noreferrer noopener" aria-label={`Follow Manglam Event on ${label}`} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-[#c5b1a0] transition-all hover:-translate-y-1 hover:border-[#d8914e] hover:bg-[#a45f26] hover:text-white"><Icon className="h-4 w-4" /></a>
               ))}
             </div>
           </div>
@@ -62,11 +66,11 @@ export function Footer() {
 
           <div>
             <p className="mb-6 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.25em] text-[#d8914e]"><span className="h-px w-7 bg-[#d8914e]" /> Find us here</p>
-            <div className="space-y-5">
-              <a href="https://maps.google.com/?q=Sitamarhi+Bihar" target="_blank" rel="noreferrer" className="group flex items-start gap-3 text-sm leading-6 text-[#c5b1a0] transition hover:text-white"><MapPin className="mt-1 h-4 w-4 shrink-0 text-[#d8914e]" /><span>Cinema Road, Near Vishal Mega Mart,<br />Sitamarhi, Bihar – 843302</span></a>
-              <a href={`tel:${PHONE}`} className="group flex items-center gap-3 text-sm text-[#c5b1a0] transition hover:text-white"><Phone className="h-4 w-4 shrink-0 text-[#d8914e]" />{PHONE}</a>
-              <a href={`mailto:${EMAIL}`} className="group flex items-center gap-3 text-sm text-[#c5b1a0] transition hover:text-white"><Mail className="h-4 w-4 shrink-0 text-[#d8914e]" />{EMAIL}</a>
-            </div>
+            <address className="not-italic space-y-5">
+              <a href="https://maps.google.com/?q=Cinema+Road+Sitamarhi+Bihar" target="_blank" rel="noreferrer" aria-label="View Manglam Event Studio on Google Maps" className="group flex items-start gap-3 text-sm leading-6 text-[#c5b1a0] transition hover:text-white"><MapPin className="mt-1 h-4 w-4 shrink-0 text-[#d8914e]" /><span>Cinema Road, Near Vishal Mega Mart,<br />Sitamarhi, Bihar – 843302</span></a>
+              <a href={`tel:${PHONE}`} aria-label={`Call Manglam Event at ${PHONE}`} className="group flex items-center gap-3 text-sm text-[#c5b1a0] transition hover:text-white"><Phone className="h-4 w-4 shrink-0 text-[#d8914e]" />{PHONE}</a>
+              <a href={`mailto:${EMAIL}`} aria-label={`Email Manglam Event at ${EMAIL}`} className="group flex items-center gap-3 text-sm text-[#c5b1a0] transition hover:text-white"><Mail className="h-4 w-4 shrink-0 text-[#d8914e]" />{EMAIL}</a>
+            </address>
           </div>
         </div>
 
