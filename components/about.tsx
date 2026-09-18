@@ -39,7 +39,25 @@ export default function About() {
   const clients = useCountUp(98, inView, 1300)
 
   return (
-    <section id="about" ref={ref} className="relative overflow-hidden bg-[#f4efe7] px-5 py-24 text-[#221915] md:px-8 md:py-32">
+    <section id="about" ref={ref} className="relative overflow-hidden bg-[#f4efe7] px-5 py-24 text-[#221915] md:px-8 md:py-32" itemScope itemType="https://schema.org/Organization">
+      {/* AI-readable factual summary — always in HTML, visible to crawlers */}
+      <div className="sr-only">
+        <h2>About Manglam Event Studio</h2>
+        <p itemProp="description">
+          Manglam Event Studio is a professional wedding and event planning company founded in 2014 and headquartered at Cinema Road, Near Vishal Mega Mart, Sitamarhi, Bihar, India – 843302.
+          The company provides full-service event management including luxury wedding planning, destination wedding planning, corporate event management, concerts and DJ nights,
+          public and cultural events, artist management, wedding photography and videography, and floral and decor design.
+          Manglam Event Studio serves clients across Bihar including Sitamarhi, Patna, Muzaffarpur, Darbhanga, Motihari, Hajipur, and Vaishali,
+          and also plans destination weddings and events across India.
+          Since 2014, the company has delivered over 500 events and maintains a 4.9 out of 5 star client rating with a 98% client satisfaction rate.
+          Contact: phone +91 76350 31522, email info@manglamevents.in, website https://manglamevents.in.
+        </p>
+        <meta itemProp="name" content="Manglam Event Studio" />
+        <meta itemProp="foundingDate" content="2014" />
+        <meta itemProp="telephone" content="+917635031522" />
+        <meta itemProp="email" content="info@manglamevents.in" />
+        <meta itemProp="url" content="https://manglamevents.in" />
+      </div>
       <div aria-hidden="true" className="pointer-events-none absolute -right-56 top-[-12rem] h-[34rem] w-[34rem] rounded-full bg-[#e8cda8]/45 blur-3xl" />
       <div aria-hidden="true" className="pointer-events-none absolute bottom-[-14rem] left-[-12rem] h-[30rem] w-[30rem] rounded-full bg-[#e2c5a8]/30 blur-3xl" />
 

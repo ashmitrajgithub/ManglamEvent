@@ -4,6 +4,7 @@ import Services from "@/components/services"
 import Portfolio from "@/components/Portfolio"
 import Trust from "@/components/Trust"
 import About from "@/components/about"
+import Faq from "@/components/Faq"
 import Contact from "@/components/contact"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -19,6 +20,7 @@ export default function Home() {
       <Services />
       <Portfolio />
       <Trust />
+      <Faq />
       <Contact />
       <Footer />
       <AIChatbot />
