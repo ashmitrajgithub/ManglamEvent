@@ -1,10 +1,9 @@
-import Hero from "@/components/Hero"
+import Hero from "@/components/hero"
 import UpcomingEvent from "@/components/UpcomingEvent"
-import Services from "@/components/Services"
+import Services from "@/components/services"
 import Portfolio from "@/components/Portfolio"
 import Trust from "@/components/Trust"
-import About from "@/components/about"
-import Planner from "@/components/Planner"
+import About from "@/components/About"
 import Contact from "@/components/Contact"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -19,7 +18,6 @@ export default function Home() {
       <About />
       <Services />
       <Portfolio />
-      <Planner />
       <Trust />
       <Contact />
       <Footer />

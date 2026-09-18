@@ -1,24 +1,19 @@
 "use client"
 
-import { useEffect, useRef, useState, useCallback } from "react"
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
-import { ArrowRight, Check, ChevronDown, Play, Star } from "lucide-react"
 import Image from "next/image"
+import { useCallback, useEffect, useRef, useState } from "react"
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { ArrowRight, ArrowUpRight, Check, Play, Sparkles, Star } from "lucide-react"
 
-const SERVICES = ["Weddings", "Corporate events", "Live experiences"]
-
-const headingLine = {
-  hidden: { y: "110%", opacity: 0 },
-  visible: { y: "0%", opacity: 1 },
-}
+const services = ["Weddings", "Corporate events", "Live experiences"]
 
 export default function Hero() {
   const [ready, setReady] = useState(false)
   const visualRef = useRef<HTMLDivElement>(null)
   const mx = useMotionValue(0)
   const my = useMotionValue(0)
-  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [2.5, -2.5]), { stiffness: 150, damping: 26 })
-  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-3.5, 3.5]), { stiffness: 150, damping: 26 })
+  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [2.4, -2.4]), { stiffness: 160, damping: 28 })
+  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-3.4, 3.4]), { stiffness: 160, damping: 28 })
 
   useEffect(() => setReady(true), [])
 
@@ -29,38 +24,76 @@ export default function Hero() {
     my.set((event.clientY - bounds.top) / bounds.height - 0.5)
   }, [mx, my])
 
-  const resetPointer = useCallback(() => { mx.set(0); my.set(0) }, [mx, my])
+  const resetPointer = useCallback(() => {
+    mx.set(0)
+    my.set(0)
+  }, [mx, my])
+
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden bg-[#fbf8f2] text-[#201712]">
-      <div className="pointer-events-none absolute -right-64 -top-56 h-[40rem] w-[40rem] rounded-full bg-[#f3d8ad]/45 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-[-16rem] left-[-12rem] h-[34rem] w-[34rem] rounded-full bg-[#ebd1b1]/30 blur-3xl" />
+    <section id="home" className="relative min-h-screen overflow-hidden bg-[#fbf8f2] text-[#241812]">
+      <div aria-hidden="true" className="pointer-events-none absolute -right-48 -top-48 h-[42rem] w-[42rem] rounded-full bg-[#f1d2aa]/55 blur-3xl" />
+      <div aria-hidden="true" className="pointer-events-none absolute -bottom-52 -left-44 h-[38rem] w-[38rem] rounded-full bg-[#ead0b3]/40 blur-3xl" />
+      <div aria-hidden="true" className="pointer-events-none absolute right-[3%] top-[26%] font-serif text-[25rem] leading-none tracking-[-.2em] text-[#a45f26]/[0.035]">M</div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-[1480px] flex-col px-6 pb-8 pt-28 sm:px-10 lg:px-16 lg:pt-32 xl:px-24">
-        <div className="flex flex-1 items-center">
-          <div className="grid w-full grid-cols-1 items-center gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
+      <div className="relative mx-auto flex min-h-screen max-w-[1500px] flex-col px-5 pb-7 pt-28 sm:px-9 lg:px-16 lg:pt-32 xl:px-24">
+        <div className="mb-8 flex items-center justify-between border-y border-[#e2d2c0] py-2 text-[9px] font-bold uppercase tracking-[.28em] text-[#907965]">
+          <span className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#a45f26] bg-[#a45f26] text-white shadow-[0_5px_16px_rgba(164,95,38,.2)]"><span className="font-serif text-xl leading-none">M</span></span>
+            <span className="flex flex-col leading-none"><span className="font-serif text-base font-semibold tracking-[.12em] text-[#241812]">MANGLAM</span><span className="mt-1 text-[7px] font-bold tracking-[.36em] text-[#a45f26]">EVENT STUDIO</span></span>
+            <span className="hidden h-1.5 w-1.5 rounded-full bg-[#a45f26] sm:inline-block" /> <span className="hidden sm:inline">The celebration studio</span>
+          </span>
+          <span className="hidden sm:block">Weddings · Corporate · Live experiences</span>
+          <span>Patna · Bihar</span>
+        </div>
+
+        <div className="flex flex-1 items-start">
+          <div className="grid w-full grid-cols-1 items-start gap-10 lg:grid-cols-[.92fr_1.08fr] lg:gap-14">
             <div className="relative z-10 max-w-2xl">
-              <motion.div initial={{ opacity: 0, y: 15 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .6 }} className="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.3em] text-[#a45f26] sm:text-xs"><span className="h-px w-9 bg-[#a45f26]" /> Manglam Event · Patna, Bihar</motion.div>
-              <motion.h1 initial="hidden" animate={ready ? "visible" : "hidden"} className="font-serif text-[clamp(3.55rem,6.2vw,6.8rem)] font-medium leading-[.86] tracking-[-.065em]"><span className="block overflow-hidden pb-1 sm:whitespace-nowrap"><motion.span variants={headingLine} transition={{ duration: .85, delay: .12, ease: [0.22, 1, 0.36, 1] }} className="block">We make your</motion.span></span><span className="block overflow-hidden pb-1 sm:whitespace-nowrap"><motion.span variants={headingLine} transition={{ duration: .85, delay: .24, ease: [0.22, 1, 0.36, 1] }} className="block"><span className="italic text-[#ae6c32]">biggest</span> moments</motion.span></span><span className="block overflow-hidden pb-1 sm:whitespace-nowrap"><motion.span variants={headingLine} transition={{ duration: .85, delay: .36, ease: [0.22, 1, 0.36, 1] }} className="block">feel effortless.</motion.span></span></motion.h1>
-              <motion.p initial={{ opacity: 0, y: 15 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .7, delay: .38 }} className="mt-9 max-w-lg text-[15px] leading-7 text-[#5c5047]">A full-service event company for celebrations with meaning, atmosphere, and impeccable execution—from the first idea to the final guest goodbye.</motion.p>
-              <motion.div initial={{ opacity: 0, y: 15 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .7, delay: .52 }} className="mt-9 flex flex-wrap items-center gap-5"><button onClick={() => scrollTo("contact")} className="group inline-flex items-center gap-4 rounded-full bg-[#a45f26] px-7 py-4 text-xs font-bold uppercase tracking-[.16em] text-white shadow-[0_12px_28px_rgba(164,95,38,.24)] transition hover:-translate-y-0.5 hover:bg-[#824819]">Start planning <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></button><button onClick={() => scrollTo("gallery")} className="group inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.16em] text-[#675a50] transition hover:text-[#a45f26]"><span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#bd9d7e] transition group-hover:border-[#a45f26] group-hover:bg-[#f2e3d3]"><Play className="ml-0.5 h-3 w-3 fill-current" /></span>See our work</button></motion.div>
-              <motion.div initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : {}} transition={{ duration: .7, delay: .7 }} className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-[#dfcfbd] pt-5">{SERVICES.map((service) => <span key={service} className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.14em] text-[#806e5e]"><Check className="h-3.5 w-3.5 text-[#a45f26]" />{service}</span>)}</motion.div>
+              <motion.div initial={{ opacity: 0, y: 15 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .6 }} className="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.3em] text-[#a45f26] sm:text-xs"><span className="h-px w-10 bg-[#a45f26]" /> Manglam Event Studio <span className="text-[#c9b8a6]">/ 2014 — now</span></motion.div>
+
+              <motion.h1 initial={{ opacity: 0, y: 28 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .9, delay: .1, ease: [0.22, 1, 0.36, 1] }} className="font-serif text-[clamp(4rem,7.4vw,8.9rem)] font-medium leading-[.79] tracking-[-.08em]">
+                We make your
+                <span className="block italic text-[#ae6c32]">biggest</span>
+                <span className="block">moments</span>
+                <span className="block">feel effortless.</span>
+              </motion.h1>
+
+              <motion.p initial={{ opacity: 0, y: 16 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .7, delay: .35 }} className="mt-9 max-w-lg text-[15px] leading-7 text-[#65574e] sm:text-base">A full-service event company for celebrations with meaning, atmosphere, and impeccable execution — from the first idea to the final guest goodbye.</motion.p>
+
+              <motion.div initial={{ opacity: 0, y: 16 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .7, delay: .48 }} className="mt-9 flex flex-wrap items-center gap-5">
+                <button onClick={() => scrollTo("contact")} className="group inline-flex items-center gap-4 rounded-full bg-[#a45f26] px-7 py-4 text-[10px] font-bold uppercase tracking-[.2em] text-white shadow-[0_13px_30px_rgba(164,95,38,.24)] transition hover:-translate-y-1 hover:bg-[#824819]">Start planning <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-transform group-hover:rotate-45"><ArrowUpRight className="h-4 w-4" /></span></button>
+                <button onClick={() => scrollTo("gallery")} className="group inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#675a50] transition hover:text-[#a45f26]"><span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#c7a98c] transition group-hover:border-[#a45f26] group-hover:bg-[#f2e3d3]"><Play className="ml-0.5 h-3 w-3 fill-current" /></span>See our work</button>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : {}} transition={{ duration: .8, delay: .7 }} className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-[#dfcfbd] pt-5">{services.map((service) => <span key={service} className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[.16em] text-[#806e5e]"><Check className="h-3.5 w-3.5 text-[#a45f26]" />{service}</span>)}</motion.div>
             </div>
 
-            <motion.div ref={visualRef} onPointerMove={onPointerMove} onPointerLeave={resetPointer} initial={{ opacity: 0, x: 32, scale: .97 }} animate={ready ? { opacity: 1, x: 0, scale: 1 } : {}} transition={{ duration: 1, delay: .2 }} className="relative h-[470px] [perspective:1100px] sm:h-[590px] lg:h-[680px]">
-              <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }} className="absolute inset-0 overflow-hidden rounded-[2.75rem] bg-[#ead6bf] shadow-[0_30px_80px_rgba(77,46,24,.18)]"><Image src="/01.jpeg" alt="Manglam Event floral wedding installation" fill priority sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover object-center brightness-[1.22] saturate-[.88]" /><div className="absolute inset-0 bg-gradient-to-t from-[#21140d]/30 via-transparent to-transparent" /><div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#21140d]/25 to-transparent" />
-                <div style={{ transform: "translateZ(55px)" }} className="absolute left-6 top-6 rounded-full border border-white/35 bg-black/20 px-4 py-2 text-[9px] font-bold uppercase tracking-[.2em] text-white backdrop-blur-md"><span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-[#efb66c]" /> Live beautifully</div>
-                <div style={{ transform: "translateZ(55px)" }} className="absolute bottom-7 left-7 right-7 flex items-end justify-between"><div><p className="text-[9px] font-bold uppercase tracking-[.2em] text-white/65">Featured production</p><p className="mt-1 font-serif text-3xl italic text-white sm:text-4xl">Royal floral evening</p></div><div className="hidden h-12 w-12 items-center justify-center rounded-full border border-white/50 text-white sm:flex"><ArrowRight className="h-4 w-4 -rotate-45" /></div></div>
+            <motion.div ref={visualRef} onPointerMove={onPointerMove} onPointerLeave={resetPointer} initial={{ opacity: 0, x: 32, scale: .96 }} animate={ready ? { opacity: 1, x: 0, scale: 1 } : {}} transition={{ duration: 1, delay: .18 }} className="relative h-[500px] [perspective:1200px] sm:h-[560px] lg:h-[610px]">
+              <div aria-hidden="true" className="absolute right-1 top-7 h-[88%] w-[84%] rotate-[3deg] rounded-[2.5rem] border-[14px] border-[#e5c29e]/45 bg-[#f3dfca] shadow-[0_22px_60px_rgba(107,57,25,.1)]" />
+              <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }} className="absolute right-0 top-3 h-[91%] w-[88%] overflow-hidden rounded-[2.5rem] border-[7px] border-[#fff9f0] bg-[#ead6bf] shadow-[0_30px_80px_rgba(77,46,24,.22)] sm:right-3 sm:w-[84%]">
+                <Image src="https://res.cloudinary.com/duewgaxov/image/upload/v1789039205/Home_page_fk5tpm.png" alt="Manglam Event floral wedding installation" fill priority sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover object-center brightness-[1.08] saturate-[.95] transition-transform duration-700 hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#21140d]/60 via-transparent to-transparent" />
+                <div style={{ transform: "translateZ(55px)" }} className="absolute left-6 top-6 rounded-full border border-white/40 bg-black/20 px-4 py-2 text-[9px] font-bold uppercase tracking-[.2em] text-white backdrop-blur-md"><span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-[#efb66c]" /> Live beautifully</div>
+                <div style={{ transform: "translateZ(55px)" }} className="absolute bottom-7 left-7 right-7 flex items-end justify-between"><div><p className="text-[9px] font-bold uppercase tracking-[.22em] text-white/70">The Manglam signature</p><p className="mt-1 font-serif text-3xl italic text-white sm:text-4xl">Atmosphere, made personal.</p></div><div className="hidden h-12 w-12 items-center justify-center rounded-full border border-white/60 text-white sm:flex"><ArrowRight className="h-4 w-4 -rotate-45" /></div></div>
               </motion.div>
-              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-8 left-5 rounded-2xl border border-[#e0c5a5] bg-[#fffdf8]/95 px-5 py-4 shadow-xl sm:left-7"><div className="flex items-center gap-2"><div className="flex text-[#bd7b39]"><Star className="h-3 w-3 fill-current" /><Star className="h-3 w-3 fill-current" /><Star className="h-3 w-3 fill-current" /><Star className="h-3 w-3 fill-current" /><Star className="h-3 w-3 fill-current" /></div><span className="text-xs font-bold text-[#6b5b4d]">4.9/5</span></div><p className="mt-1 text-[9px] font-bold uppercase tracking-[.12em] text-[#917a66]">Loved by 500+ clients</p></motion.div>
-              <div className="absolute -right-7 top-1/2 hidden h-32 w-32 -translate-y-1/2 rounded-full border border-dashed border-[#b87531]/45 lg:block" />
+
+              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-0 left-0 z-10 w-[230px] overflow-hidden rounded-2xl border border-[#e4c7a8] bg-[#fffdf8]/95 shadow-[0_18px_42px_rgba(77,46,24,.2)] sm:left-1">
+                <div className="relative h-28"><Image src="/dholida-nights-sponsorship.png" alt="Dholida Nights campaign" fill sizes="230px" className="object-cover object-[center_72%]" /><div className="absolute inset-0 bg-gradient-to-t from-[#2d160c]/80 to-transparent" /></div>
+                <div className="p-4"><div className="flex items-center justify-between"><span className="text-[9px] font-bold uppercase tracking-[.2em] text-[#a45f26]">Upcoming campaign</span><Sparkles className="h-3.5 w-3.5 text-[#a45f26]" /></div><p className="mt-2 font-sans text-sm font-bold uppercase tracking-[-.02em] text-[#2e1d14]">Dholida Nights</p><p className="mt-1 text-[9px] uppercase tracking-[.14em] text-[#917a66]">15 October 2026 · Sitamarhi</p></div>
+              </motion.div>
+
+              <motion.div animate={{ rotate: [0, 5, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute -right-2 top-10 flex h-28 w-28 items-center justify-center rounded-full border border-dashed border-[#a45f26]/55 bg-[#fbf8f2]/80 text-center text-[8px] font-bold uppercase leading-4 tracking-[.18em] text-[#a45f26] backdrop-blur-sm sm:-right-4 sm:h-32 sm:w-32"><span className="flex h-20 w-20 items-center justify-center rounded-full border border-[#a45f26]/20">Create<br />the feeling</span></motion.div>
+              <div className="absolute -left-10 top-24 hidden text-[9px] font-bold uppercase tracking-[.35em] text-[#a08066] [writing-mode:vertical-rl] lg:block">Celebrations with meaning</div>
             </motion.div>
           </div>
         </div>
-        <motion.div initial={{ opacity: 0, y: 14 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .7, delay: .85 }} className="mt-16 grid max-w-xl grid-cols-3 border-t border-[#dfcfbd] pt-5 lg:mt-12">{[{ value: "500+", label: "Events delivered" }, { value: "10+", label: "Years of expertise" }, { value: "98%", label: "Happy clients" }].map((stat, i) => <div key={stat.label} className={i ? "border-l border-[#dfcfbd] pl-4 sm:pl-7" : ""}><p className="font-serif text-2xl text-[#a45f26] sm:text-3xl">{stat.value}</p><p className="mt-1 text-[9px] font-bold uppercase tracking-[.13em] text-[#806e5e]">{stat.label}</p></div>)}</motion.div>
+
+        <motion.div initial={{ opacity: 0, y: 14 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .7, delay: .85 }} className="relative mt-14 grid max-w-2xl grid-cols-3 border-t border-[#dfcfbd] pt-5 lg:mt-8">{[{ value: "500+", label: "Events delivered" }, { value: "10+", label: "Years of expertise" }, { value: "4.9/5", label: "Client rating" }].map((stat, index) => <div key={stat.label} className={index ? "border-l border-[#dfcfbd] pl-4 sm:pl-8" : ""}><p className="font-serif text-3xl text-[#a45f26] sm:text-4xl">{stat.value}</p><p className="mt-1 text-[9px] font-bold uppercase tracking-[.17em] text-[#806e5e]">{stat.label}</p></div>)}</motion.div>
       </div>
-      <button onClick={() => scrollTo("about")} className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-[9px] font-bold uppercase tracking-[.25em] text-[#a08066] lg:flex"><span>Discover</span><ChevronDown className="h-4 w-4 animate-bounce" /></button>
+
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden border-t border-[#dfcfbd]/80 bg-[#f6eee4]/85 backdrop-blur-sm"><motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="flex w-max items-center gap-8 whitespace-nowrap py-3 text-[9px] font-bold uppercase tracking-[.3em] text-[#a08066]">{[...Array(2)].flatMap((_, group) => services.concat(["Manglam Event Studio", "Made for the moment"]).map((item, index) => <span key={`${group}-${index}`} className="inline-flex items-center gap-8"><span>{item}</span><span className="h-1 w-1 rounded-full bg-[#a45f26]" /></span>))}</motion.div></div>
     </section>
   )
 }
