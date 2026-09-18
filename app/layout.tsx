@@ -1,8 +1,11 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 import StructuredData from "./structured-data"
+
+const GA_ID = "G-S6NFJ6766T"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
@@ -145,6 +148,20 @@ export default function RootLayout({
           Skip to main content
         </a>
         <div id="main-content">{children}</div>
+
+        {/* Google Analytics GA4 */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}', { page_path: window.location.pathname });
+          `}
+        </Script>
       </body>
     </html>
   )
