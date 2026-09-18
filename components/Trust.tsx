@@ -95,7 +95,7 @@ export default function Trust() {
                         aria-label={`Read review from ${item.name}`}
                       >
                         <span className={`relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 bg-[#f4ece4] transition-all duration-300 ${isActive ? "border-[#a45f26] shadow-[0_6px_18px_rgba(164,95,38,.24)]" : "border-[#e1d5c9] grayscale"}`}>
-                          <Image src={item.image} alt="" fill sizes="48px" className="object-cover" />
+                          <Image src={item.image} alt={`${item.name} — Manglam Event client review`} fill sizes="48px" className="object-cover" />
                         </span>
                         <span className="min-w-0">
                           <span className={`block truncate text-sm ${isActive ? "font-semibold text-[#282019]" : "font-medium text-[#6f6258]"}`}>{item.shortName}</span>

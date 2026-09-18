@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | Manglam Event Studio",
   },
   description:
-    "Manglam Event Studio is Bihar's most trusted wedding and event planning company. Based in Sitamarhi, we create unforgettable luxury weddings, destination weddings, corporate events, concerts, and cultural celebrations since 2014. 500+ events delivered. 4.9★ rated.",
+    "Bihar's top wedding & event planning company in Sitamarhi. Luxury weddings, destination events, corporate shows & more. 500+ events, 4.9★ rated since 2014.",
   keywords: [
     "wedding planner Bihar",
     "wedding planner Sitamarhi",
