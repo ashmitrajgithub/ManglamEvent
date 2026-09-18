@@ -9,6 +9,7 @@ import Contact from "@/components/contact"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import AIChatbot from "@/components/ai-chatbot"
+import WhatsAppFloat from "@/components/WhatsAppFloat"
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <Contact />
       <Footer />
       <AIChatbot />
+      <WhatsAppFloat />
     </main>
   )
 }

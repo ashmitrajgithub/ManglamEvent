@@ -50,7 +50,7 @@ export default function Portfolio() {
         <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: .7, ease: "easeOut" }} className="flex flex-col justify-between gap-8 border-b border-[#dfcfbd] pb-8 md:flex-row md:items-end">
           <div>
             <p className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-[#a45f26] sm:text-xs"><span className="h-px w-9 bg-[#a45f26]" /> Our gallery <span className="text-[#a99280]">/ 09 stories</span></p>
-            <h2 className="max-w-4xl font-serif text-[clamp(3.3rem,7vw,7rem)] font-medium leading-[.82] tracking-[-.075em]">Scenes that stay<br /><span className="italic text-[#b36b32]">with you.</span></h2>
+            <h2 className="max-w-4xl font-serif text-[clamp(2.4rem,7vw,7rem)] font-medium leading-[.82] tracking-[-.075em]">Scenes that stay<br /><span className="italic text-[#b36b32]">with you.</span></h2>
           </div>
           <div className="max-w-sm md:text-right"><p className="text-sm leading-6 text-[#756459]">A living archive of the celebrations, details and little in-between moments we have made together.</p><button type="button" onClick={() => { setFilter("All"); setShowAll(true) }} className="group mt-6 inline-flex items-center gap-3 rounded-full bg-[#241a15] px-5 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-white transition-all hover:-translate-y-0.5 hover:bg-[#a45f26]">View all work <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 transition-transform group-hover:rotate-45"><ArrowUpRight className="h-3.5 w-3.5" /></span></button></div>
         </motion.div>

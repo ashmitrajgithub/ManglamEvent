@@ -34,7 +34,7 @@ export default function Services() {
           <div className="relative z-10 flex flex-col justify-between gap-9 md:flex-row md:items-end">
             <div>
               <p className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-[#a45f26] sm:text-xs"><span className="h-px w-9 bg-[#a45f26]" /> What we do <span className="text-[#a99280]">/ 08 disciplines</span></p>
-              <h2 className="max-w-4xl font-serif text-[clamp(3.15rem,7vw,7rem)] font-medium leading-[.82] tracking-[-.075em] text-[#261b16]">Everything your<br /><span className="italic text-[#ad6b32]">moment deserves.</span></h2>
+              <h2 className="max-w-4xl font-serif text-[clamp(2.4rem,7vw,7rem)] font-medium leading-[.82] tracking-[-.075em] text-[#261b16]">Everything your<br /><span className="italic text-[#ad6b32]">moment deserves.</span></h2>
             </div>
             <div className="max-w-sm md:pb-1 md:text-right">
               <p className="text-sm leading-6 text-[#756459]">From the first spark to the final guest goodbye, one composed team shapes every detail around your story.</p>

@@ -30,7 +30,7 @@ export function Footer() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.35)_1px,transparent_1px)] [background-size:72px_72px]" />
 
       <div className="relative mx-auto max-w-7xl px-5 pb-7 pt-16 sm:px-8 md:pt-24">
-        <div className="grid gap-14 lg:grid-cols-[1.25fr_.72fr_.85fr_1fr] lg:gap-12">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.25fr_.72fr_.85fr_1fr] lg:gap-12">
           <div>
             <Link href="#home" className="group inline-flex flex-col leading-none" aria-label="Manglam Event home">
               <span className="font-serif text-4xl font-semibold tracking-[.09em] text-[#fff8f1] transition-colors group-hover:text-[#efb66c]">MANGLAM</span>

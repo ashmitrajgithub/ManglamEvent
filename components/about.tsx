@@ -42,12 +42,12 @@ export default function About() {
     <section id="about" ref={ref} className="relative overflow-hidden bg-[#f4efe7] px-5 py-24 text-[#221915] md:px-8 md:py-32" itemScope itemType="https://schema.org/Organization">
       {/* AI-readable factual summary — always in HTML, visible to crawlers */}
       <div className="sr-only">
-        <h2>About Manglam Event Studio</h2>
+        <h2>About Manglam Event</h2>
         <p itemProp="description">
-          Manglam Event Studio is a professional wedding and event planning company founded in 2014 and headquartered at Cinema Road, Near Vishal Mega Mart, Sitamarhi, Bihar, India – 843302.
+          Manglam Event is a professional wedding and event planning company founded in 2014 and headquartered at Cinema Road, Near Vishal Mega Mart, Sitamarhi, Bihar, India – 843302.
           The company provides full-service event management including luxury wedding planning, destination wedding planning, corporate event management, concerts and DJ nights,
           public and cultural events, artist management, wedding photography and videography, and floral and decor design.
-          Manglam Event Studio serves clients across Bihar including Sitamarhi, Patna, Muzaffarpur, Darbhanga, Motihari, Hajipur, and Vaishali,
+          Manglam Event serves clients across Bihar including Sitamarhi, Patna, Muzaffarpur, Darbhanga, Motihari, Hajipur, and Vaishali,
           and also plans destination weddings and events across India.
           Since 2014, the company has delivered over 500 events and maintains a 4.9 out of 5 star client rating with a 98% client satisfaction rate.
           Contact: phone +91 76350 31522, email info@manglamevents.in, website https://manglamevents.in.
