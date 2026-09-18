@@ -52,7 +52,7 @@ export default function About() {
           Since 2014, the company has delivered over 500 events and maintains a 4.9 out of 5 star client rating with a 98% client satisfaction rate.
           Contact: phone +91 76350 31522, email info@manglamevents.in, website https://manglamevents.in.
         </p>
-        <meta itemProp="name" content="Manglam Event Studio" />
+        <meta itemProp="name" content="Manglam Event" />
         <meta itemProp="foundingDate" content="2014" />
         <meta itemProp="telephone" content="+917635031522" />
         <meta itemProp="email" content="info@manglamevents.in" />

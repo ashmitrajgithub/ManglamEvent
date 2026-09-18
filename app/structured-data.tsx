@@ -3,7 +3,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "EventPlanningService"],
     "@id": "https://manglamevents.in/#organization",
-    name: "Manglam Event Studio",
+    name: "Manglam Event",
     alternateName: "Manglam Event",
     description:
       "Premier wedding and event planning company based in Sitamarhi, Bihar. Specialising in luxury weddings, destination weddings, corporate events, concerts, floral decor, and artist management since 2014.",
@@ -90,7 +90,7 @@ export default function StructuredData() {
     "@type": "WebSite",
     "@id": "https://manglamevents.in/#website",
     url: "https://manglamevents.in",
-    name: "Manglam Event Studio",
+    name: "Manglam Event",
     description: "Premier Wedding & Event Planning in Bihar, India",
     publisher: { "@id": "https://manglamevents.in/#organization" },
     inLanguage: "en-IN",
@@ -113,7 +113,7 @@ export default function StructuredData() {
         name: "How much does a wedding planner cost in Bihar?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Wedding planning packages at Manglam Event Studio in Bihar start from ₹2 lakh for intimate ceremonies and go up to ₹50 lakh+ for luxury destination weddings. We offer customised packages based on guest count, venue, decor requirements, and services selected. Contact us for a free consultation.",
+          text: "Wedding planning packages at Manglam Event in Bihar start from ₹2 lakh for intimate ceremonies and go up to ₹50 lakh+ for luxury destination weddings. We offer customised packages based on guest count, venue, decor requirements, and services selected. Contact us for a free consultation.",
         },
       },
       {
@@ -137,7 +137,7 @@ export default function StructuredData() {
         name: "What areas in Bihar does Manglam Event serve?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Manglam Event Studio is based in Sitamarhi, Bihar and serves clients across Bihar including Patna, Muzaffarpur, Darbhanga, Motihari, Hajipur, Vaishali, and all surrounding districts. We also operate pan-India for destination events.",
+          text: "Manglam Event is based in Sitamarhi, Bihar and serves clients across Bihar including Patna, Muzaffarpur, Darbhanga, Motihari, Hajipur, Vaishali, and all surrounding districts. We also operate pan-India for destination events.",
         },
       },
       {

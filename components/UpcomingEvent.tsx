@@ -124,7 +124,7 @@ export default function UpcomingEvent() {
           </div>
 
           <div className="relative z-10 flex items-center justify-between border-t border-white/[0.1] px-6 py-3 text-[9px] font-bold uppercase tracking-[0.26em] text-white/30 sm:px-8">
-            <span>Manglam Event Studio</span>
+            <span>Manglam Event</span>
             <span className="hidden sm:inline">Dholida Nights · Sitamarhi</span>
             <span>2026</span>
           </div>

@@ -8,7 +8,7 @@ const faqs = [
   {
     question: "Manglam Events kya karta hai?",
     answer:
-      "Manglam Event Studio Bihar ka ek full-service wedding aur event planning company hai. Hum luxury weddings, destination weddings, corporate events, concerts, cultural programmes, photography, floral decor aur artist management services provide karte hain — 2014 se Sitamarhi, Bihar mein based hain.",
+      "Manglam Event Bihar ka ek full-service wedding aur event planning company hai. Hum luxury weddings, destination weddings, corporate events, concerts, cultural programmes, photography, floral decor aur artist management services provide karte hain — 2014 se Sitamarhi, Bihar mein based hain.",
   },
   {
     question: "Kin cities mein Manglam Event ki service milti hai?",
@@ -38,7 +38,7 @@ const faqs = [
   {
     question: "Manglam Event kitne saalon se kaam kar raha hai?",
     answer:
-      "Manglam Event Studio 2014 mein shuru hua tha Sitamarhi, Bihar mein. 10+ saal ke experience mein humne 500+ events deliver kiye hain aur 4.9/5 ka client rating maintain kiya hai. Hum Bihar ka sabse trusted event management company hain.",
+      "Manglam Event 2014 mein shuru hua tha Sitamarhi, Bihar mein. 10+ saal ke experience mein humne 500+ events deliver kiye hain aur 4.9/5 ka client rating maintain kiya hai. Hum Bihar ka sabse trusted event management company hain.",
   },
 ]
 
@@ -60,7 +60,7 @@ export default function Faq() {
             Sawalon ke <span className="italic text-[#ae6c32]">jawab.</span>
           </h2>
           <p className="mt-6 max-w-xl text-[15px] leading-7 text-[#65574e]">
-            Manglam Event Studio ke baare mein sabse zyada pooche jaane waale sawal. Kuch aur poochna ho toh seedha WhatsApp karein.
+            Manglam Event ke baare mein sabse zyada pooche jaane waale sawal. Kuch aur poochna ho toh seedha WhatsApp karein.
           </p>
         </div>
 

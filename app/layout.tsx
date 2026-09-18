@@ -15,8 +15,8 @@ const BASE_URL = "https://manglamevents.in"
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Manglam Event Studio — Premier Wedding & Event Planning in Bihar",
-    template: "%s | Manglam Event Studio",
+    default: "Manglam Event — Premier Wedding & Event Planning in Bihar",
+    template: "%s | Manglam Event",
   },
   description:
     "Bihar's top wedding & event planning company in Sitamarhi. Luxury weddings, destination events, corporate shows & more. 500+ events, 4.9★ rated since 2014.",
@@ -38,17 +38,17 @@ export const metadata: Metadata = {
     "artist management Bihar",
     "wedding photographer Bihar",
     "wedding videographer Bihar",
-    "Manglam Event Studio",
+    "Manglam Event",
     "manglam event",
     "best event planner in Bihar",
     "affordable wedding planner Bihar",
     "Dholida Nights",
   ],
-  authors: [{ name: "Manglam Event Studio", url: BASE_URL }],
-  creator: "Manglam Event Studio",
-  publisher: "Manglam Event Studio",
+  authors: [{ name: "Manglam Event", url: BASE_URL }],
+  creator: "Manglam Event",
+  publisher: "Manglam Event",
   category: "Event Planning",
-  applicationName: "Manglam Event Studio",
+  applicationName: "Manglam Event",
   alternates: {
     canonical: BASE_URL,
   },
@@ -77,23 +77,23 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: BASE_URL,
-    title: "Manglam Event Studio — Premier Wedding & Event Planning in Bihar",
+    title: "Manglam Event — Premier Wedding & Event Planning in Bihar",
     description:
       "Bihar's most trusted wedding and event planning studio. Luxury weddings, destination events, corporate experiences, and more — crafted with soul since 2014.",
-    siteName: "Manglam Event Studio",
+    siteName: "Manglam Event",
     images: [
       {
         url: "/og-image.png",
         width: 1024,
         height: 1024,
-        alt: "Manglam Event Studio — Luxury Wedding & Event Planning in Bihar, India",
+        alt: "Manglam Event — Luxury Wedding & Event Planning in Bihar, India",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Manglam Event Studio — Premier Wedding & Event Planning in Bihar",
+    title: "Manglam Event — Premier Wedding & Event Planning in Bihar",
     description:
       "Bihar's most trusted wedding and event planning studio. Luxury weddings, destination events, corporate experiences — crafted since 2014.",
     images: ["/og-image.png"],
@@ -155,9 +155,9 @@ export default function RootLayout({
             className="sr-only"
             aria-hidden="true"
           >
-            <h1>Manglam Event Studio — Wedding &amp; Event Planning in Bihar, India</h1>
+            <h1>Manglam Event — Wedding &amp; Event Planning in Bihar, India</h1>
             <p>
-              Manglam Event Studio is Bihar&apos;s leading wedding and event planning company,
+              Manglam Event is Bihar&apos;s leading wedding and event planning company,
               founded in 2014 and based in Sitamarhi, Bihar, India.
               We offer luxury wedding planning, destination wedding planning, corporate event management,
               concerts and DJ nights, artist management, wedding photography and videography,
@@ -171,9 +171,9 @@ export default function RootLayout({
           {/* noscript fallback — content visible when JS disabled (Bing Guideline #8) */}
           <noscript>
             <div style={{ padding: "2rem", fontFamily: "sans-serif", maxWidth: "800px", margin: "0 auto" }}>
-              <h1>Manglam Event Studio — Wedding &amp; Event Planning in Bihar</h1>
+              <h1>Manglam Event — Wedding &amp; Event Planning in Bihar</h1>
               <p>
-                Manglam Event Studio is a full-service wedding and event planning company founded in 2014,
+                Manglam Event is a full-service wedding and event planning company founded in 2014,
                 based in Sitamarhi, Bihar, India. We create luxury weddings, destination weddings,
                 corporate events, concerts, public events, and provide photography, floral decor,
                 and artist management services across Bihar and pan-India.

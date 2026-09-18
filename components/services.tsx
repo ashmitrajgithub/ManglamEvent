@@ -41,7 +41,7 @@ export default function Services() {
               <div className="mt-6 flex items-center gap-3 md:justify-end"><span className="h-2 w-2 rounded-full bg-[#ad6b32] shadow-[0_0_12px_rgba(173,107,50,.42)]" /><span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#9d8977]">Strategy · craft · atmosphere</span></div>
             </div>
           </div>
-          <div className="relative z-10 mt-9 flex items-center justify-between border-t border-[#e1d1bf] pt-4 text-[9px] font-bold uppercase tracking-[0.26em] text-[#ae9b89]"><span>Manglam Event Studio</span><span className="hidden sm:block">Built for the moment</span><span>01 — 08</span></div>
+          <div className="relative z-10 mt-9 flex items-center justify-between border-t border-[#e1d1bf] pt-4 text-[9px] font-bold uppercase tracking-[0.26em] text-[#ae9b89]"><span>Manglam Event</span><span className="hidden sm:block">Built for the moment</span><span>01 — 08</span></div>
         </motion.div>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

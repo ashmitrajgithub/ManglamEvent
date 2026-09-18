@@ -51,7 +51,7 @@ export default function Hero() {
         <div className="flex flex-1 items-start">
           <div className="grid w-full grid-cols-1 items-start gap-10 lg:grid-cols-[.92fr_1.08fr] lg:gap-14">
             <div className="relative z-10 max-w-2xl">
-              <motion.div initial={{ opacity: 0, y: 15 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .6 }} className="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.3em] text-[#a45f26] sm:text-xs"><span className="h-px w-10 bg-[#a45f26]" /> Manglam Event Studio <span className="text-[#c9b8a6]">/ 2014 — now</span></motion.div>
+              <motion.div initial={{ opacity: 0, y: 15 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .6 }} className="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.3em] text-[#a45f26] sm:text-xs"><span className="h-px w-10 bg-[#a45f26]" /> Manglam Event <span className="text-[#c9b8a6]">/ 2014 — now</span></motion.div>
 
               <motion.h1 initial={{ opacity: 0, y: 28 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .9, delay: .1, ease: [0.22, 1, 0.36, 1] }} className="font-serif text-[clamp(3rem,7.4vw,8.9rem)] font-medium leading-[.79] tracking-[-.08em]">
                 We make your
@@ -93,7 +93,7 @@ export default function Hero() {
         <motion.div initial={{ opacity: 0, y: 14 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ duration: .7, delay: .85 }} className="relative mt-14 grid max-w-2xl grid-cols-3 border-t border-[#dfcfbd] pt-5 lg:mt-8">{[{ value: "500+", label: "Events delivered" }, { value: "10+", label: "Years of expertise" }, { value: "4.9/5", label: "Client rating" }].map((stat, index) => <div key={stat.label} className={index ? "border-l border-[#dfcfbd] pl-4 sm:pl-8" : ""}><p className="font-serif text-3xl text-[#a45f26] sm:text-4xl">{stat.value}</p><p className="mt-1 text-[9px] font-bold uppercase tracking-[.17em] text-[#806e5e]">{stat.label}</p></div>)}</motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden border-t border-[#dfcfbd]/80 bg-[#f6eee4]/85 backdrop-blur-sm"><motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="flex w-max items-center gap-8 whitespace-nowrap py-3 text-[9px] font-bold uppercase tracking-[.3em] text-[#a08066]">{[...Array(2)].flatMap((_, group) => services.concat(["Manglam Event Studio", "Made for the moment"]).map((item, index) => <span key={`${group}-${index}`} className="inline-flex items-center gap-8"><span>{item}</span><span className="h-1 w-1 rounded-full bg-[#a45f26]" /></span>))}</motion.div></div>
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden border-t border-[#dfcfbd]/80 bg-[#f6eee4]/85 backdrop-blur-sm"><motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="flex w-max items-center gap-8 whitespace-nowrap py-3 text-[9px] font-bold uppercase tracking-[.3em] text-[#a08066]">{[...Array(2)].flatMap((_, group) => services.concat(["Manglam Event", "Made for the moment"]).map((item, index) => <span key={`${group}-${index}`} className="inline-flex items-center gap-8"><span>{item}</span><span className="h-1 w-1 rounded-full bg-[#a45f26]" /></span>))}</motion.div></div>
     </section>
   )
 }

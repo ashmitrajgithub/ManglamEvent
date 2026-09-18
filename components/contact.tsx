@@ -62,7 +62,7 @@ export default function Contact() {
 
             <div className="relative z-10 flex h-full flex-col justify-between">
               <div className="flex items-center justify-between gap-4">
-                <span className="rounded-full border border-white/25 bg-black/20 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/90 backdrop-blur-md"><span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-[#efb66c]" /> Manglam Event Studio</span>
+                <span className="rounded-full border border-white/25 bg-black/20 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/90 backdrop-blur-md"><span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-[#efb66c]" /> Manglam Event</span>
                 <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-white/60">Now booking 2026</span>
               </div>
 

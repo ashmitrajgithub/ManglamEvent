@@ -67,7 +67,7 @@ export function Footer() {
           <div>
             <p className="mb-6 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.25em] text-[#d8914e]"><span className="h-px w-7 bg-[#d8914e]" /> Find us here</p>
             <address className="not-italic space-y-5">
-              <a href="https://maps.google.com/?q=Cinema+Road+Sitamarhi+Bihar" target="_blank" rel="noreferrer" aria-label="View Manglam Event Studio on Google Maps" className="group flex items-start gap-3 text-sm leading-6 text-[#c5b1a0] transition hover:text-white"><MapPin className="mt-1 h-4 w-4 shrink-0 text-[#d8914e]" /><span>Cinema Road, Near Vishal Mega Mart,<br />Sitamarhi, Bihar – 843302</span></a>
+              <a href="https://maps.google.com/?q=Cinema+Road+Sitamarhi+Bihar" target="_blank" rel="noreferrer" aria-label="View Manglam Event on Google Maps" className="group flex items-start gap-3 text-sm leading-6 text-[#c5b1a0] transition hover:text-white"><MapPin className="mt-1 h-4 w-4 shrink-0 text-[#d8914e]" /><span>Cinema Road, Near Vishal Mega Mart,<br />Sitamarhi, Bihar – 843302</span></a>
               <a href={`tel:${PHONE}`} aria-label={`Call Manglam Event at ${PHONE}`} className="group flex items-center gap-3 text-sm text-[#c5b1a0] transition hover:text-white"><Phone className="h-4 w-4 shrink-0 text-[#d8914e]" />{PHONE}</a>
               <a href={`mailto:${EMAIL}`} aria-label={`Email Manglam Event at ${EMAIL}`} className="group flex items-center gap-3 text-sm text-[#c5b1a0] transition hover:text-white"><Mail className="h-4 w-4 shrink-0 text-[#d8914e]" />{EMAIL}</a>
             </address>
@@ -85,7 +85,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-[10px] font-semibold uppercase tracking-[.16em] text-[#957e6d] sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} Manglam Event Studio. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Manglam Event. All rights reserved.</p>
           <div className="flex gap-5"><Link href="#" className="transition hover:text-[#efb66c]">Privacy</Link><Link href="#" className="transition hover:text-[#efb66c]">Terms</Link></div>
         </div>
       </div>
