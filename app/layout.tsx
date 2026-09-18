@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import Script from "next/script"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import StructuredData from "./structured-data"
 
@@ -162,6 +163,8 @@ export default function RootLayout({
             gtag('config', '${GA_ID}', { page_path: window.location.pathname });
           `}
         </Script>
+        {/* Vercel Analytics */}
+        <Analytics />
       </body>
     </html>
   )
