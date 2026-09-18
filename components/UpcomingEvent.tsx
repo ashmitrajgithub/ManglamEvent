@@ -51,7 +51,7 @@ export default function UpcomingEvent() {
                 <motion.p variants={reveal} transition={{ duration: 0.65, ease: "easeOut" }} className="mb-3 text-[10px] font-bold uppercase tracking-[0.32em] text-white/40 sm:text-xs">
                   Manglam Event presents
                 </motion.p>
-                <motion.h2 variants={reveal} transition={{ duration: 0.75, ease: "easeOut" }} className="max-w-[650px] font-sans text-[clamp(3.35rem,7.1vw,7.5rem)] font-black uppercase leading-[0.82] tracking-[-0.08em] text-white">
+                <motion.h2 variants={reveal} transition={{ duration: 0.75, ease: "easeOut" }} className="max-w-[650px] font-sans text-[clamp(2.6rem,7.1vw,7.5rem)] font-black uppercase leading-[0.82] tracking-[-0.08em] text-white">
                   Dholida
                   <span className="block text-[#c8ff00]">Nights.</span>
                 </motion.h2>

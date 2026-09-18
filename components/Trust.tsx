@@ -72,7 +72,7 @@ export default function Trust() {
               </div>
               <p className="mt-3 max-w-xs text-sm leading-6 text-[#8b7b6e]">The kind words behind every beautiful celebration we create.</p>
 
-              <div className="relative mt-12 min-h-[380px] pl-3 sm:mt-14">
+              <div className="relative mt-10 sm:mt-14 sm:min-h-[380px] pl-3">
                 <svg aria-hidden="true" viewBox="0 0 120 390" className="pointer-events-none absolute left-0 top-1 h-[385px] w-[112px] overflow-visible">
                   <path d="M38 18 C 102 45, 105 91, 71 135 C 37 179, 37 219, 67 254 C 92 284, 93 325, 40 365" fill="none" stroke="#decfc1" strokeWidth="1.6" />
                   <path d="M38 18 C 99 45, 102 91, 68 135 C 35 179, 35 219, 65 254 C 89 284, 90 323, 40 365" fill="none" stroke="#f1e8df" strokeWidth="6" />
@@ -81,7 +81,6 @@ export default function Trust() {
                 <div className="relative z-10 space-y-5 sm:space-y-6">
                   {reviews.map((item, index) => {
                     const isActive = index === active
-                    const offset = [0, 62, 43, 0][index]
 
                     return (
                       <motion.button
@@ -90,8 +89,7 @@ export default function Trust() {
                         onClick={() => selectReview(index)}
                         whileHover={{ x: 5 }}
                         transition={{ duration: 0.2 }}
-                        style={{ marginLeft: offset }}
-                        className={`relative flex w-full max-w-[290px] items-center gap-4 text-left transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-60 hover:opacity-90"}`}
+                        className={`relative flex w-full max-w-[290px] items-center gap-4 text-left transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-60 hover:opacity-90"} ${[``, `sm:ml-[62px]`, `sm:ml-[43px]`, ``][index]}`}
                         aria-label={`Read review from ${item.name}`}
                       >
                         <span className={`relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 bg-[#f4ece4] transition-all duration-300 ${isActive ? "border-[#a45f26] shadow-[0_6px_18px_rgba(164,95,38,.24)]" : "border-[#e1d5c9] grayscale"}`}>
@@ -109,7 +107,7 @@ export default function Trust() {
               </div>
             </div>
 
-            <div className="relative flex min-h-[470px] flex-col justify-between px-7 py-10 sm:px-14 sm:py-14 lg:px-20 lg:py-20">
+            <div className="relative flex flex-col justify-between sm:min-h-[470px] px-7 py-8 sm:px-14 sm:py-14 lg:px-20 lg:py-20">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={review.name}
@@ -129,7 +127,7 @@ export default function Trust() {
                     </div>
                     <span className="text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-[#b8a89a]">Verified client</span>
                   </div>
-                  <blockquote className="mt-6 max-w-2xl font-serif text-[2.2rem] font-medium italic leading-[1.06] tracking-[-0.035em] text-[#30221a] sm:text-5xl lg:text-[3.7rem]">
+                  <blockquote className="mt-6 max-w-2xl font-serif text-[1.25rem] font-medium italic leading-[1.2] tracking-[-0.02em] text-[#30221a] sm:text-[2.2rem] sm:leading-[1.06] sm:tracking-[-0.035em] lg:text-[3.7rem]">
                     “{review.quote}”
                   </blockquote>
                   <div className="mt-auto flex items-end justify-between gap-6 pt-14">

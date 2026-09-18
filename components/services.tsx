@@ -48,7 +48,7 @@ export default function Services() {
           {services.map((service, index) => {
             const Icon = service.icon
             return (
-              <motion.a key={service.title} href={WHATSAPP} target="_blank" rel="noreferrer" initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: .6, delay: index * .06, ease: "easeOut" }} whileHover={{ y: -5 }} className={`group relative overflow-hidden rounded-[1.25rem] border border-[#e2d4c5] bg-[#fffdf9] p-6 shadow-[0_10px_30px_rgba(78,51,29,.04)] transition-all duration-300 hover:border-[#c8aa8e] hover:shadow-[0_18px_38px_rgba(78,51,29,.1)] ${index === 0 ? "sm:col-span-2 lg:col-span-2 min-h-[300px]" : "min-h-[268px]"}`}>
+              <motion.a key={service.title} href={WHATSAPP} target="_blank" rel="noreferrer" initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: .6, delay: index * .06, ease: "easeOut" }} whileHover={{ y: -5 }} className={`group relative overflow-hidden rounded-[1.25rem] border border-[#e2d4c5] bg-[#fffdf9] p-6 shadow-[0_10px_30px_rgba(78,51,29,.04)] transition-all duration-300 hover:border-[#c8aa8e] hover:shadow-[0_18px_38px_rgba(78,51,29,.1)] ${index === 0 ? "sm:col-span-2 lg:col-span-2 sm:min-h-[300px]" : "sm:min-h-[268px]"}`}>
                 <div aria-hidden="true" className="absolute -right-12 -top-12 h-36 w-36 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-25" style={{ background: service.color }} />
                 <div className="relative flex h-full flex-col justify-between">
                   <div>

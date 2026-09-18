@@ -44,7 +44,7 @@ export default function Contact() {
         >
           <div>
             <p className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-[#a45f26] sm:text-xs"><span className="h-px w-9 bg-[#a45f26]" /> Get in touch</p>
-            <h2 className="mt-5 max-w-3xl font-serif text-[clamp(2.6rem,6vw,6.5rem)] font-medium leading-[0.86] tracking-[-0.065em] text-[#261b15]">Your next beautiful<br /><span className="italic text-[#ad6b32]">chapter starts here.</span></h2>
+            <h2 className="mt-5 max-w-3xl font-serif text-[clamp(2.2rem,6vw,6.5rem)] font-medium leading-[0.86] tracking-[-0.065em] text-[#261b15]">Your next beautiful<br /><span className="italic text-[#ad6b32]">chapter starts here.</span></h2>
           </div>
           <p className="max-w-sm text-sm leading-7 text-[#756459] md:pb-2">Have a date, a dream, or just a feeling? Tell us a little about it. We&apos;ll bring the right people, ideas, and energy to the table.</p>
         </motion.div>
@@ -54,7 +54,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: -28 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.75, delay: 0.1, ease: "easeOut" }}
-            className="relative overflow-hidden bg-[#24160f] p-7 text-white sm:p-10 lg:min-h-[720px] lg:p-12"
+            className="relative min-h-[280px] overflow-hidden bg-[#24160f] p-7 text-white sm:min-h-[420px] sm:p-10 lg:min-h-[720px] lg:p-12"
           >
             <Image src="/11.jpeg" alt="A Manglam Event celebration entrance glowing at night" fill sizes="(max-width: 1024px) 100vw, 42vw" className="object-cover object-center opacity-70" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(22,12,7,.58)_0%,rgba(22,12,7,.18)_35%,rgba(22,12,7,.93)_100%)]" />
